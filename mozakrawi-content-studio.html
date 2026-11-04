@@ -951,7 +951,7 @@
     };
 
     let localBrowserApiKey = '';
-    let serverStatus = { available: false, hasEnvKey: false, maskedEnvKey: null };
+    let serverStatus = { available: false, storageMode: 'server', hasEnvKey: false, maskedEnvKey: null };
 
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -963,7 +963,7 @@
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(savedState));
       } catch (e) {}
-      if (serverStatus.available) {
+      if (serverStatus.available && serverStatus.storageMode !== 'browser') {
         fetch('/api/user-data', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -982,8 +982,10 @@
         if (res.ok) {
           const info = await res.json();
           serverStatus.available = true;
+          serverStatus.storageMode = info.storageMode || 'server';
           serverStatus.hasEnvKey = Boolean(info.hasEnvKey);
           serverStatus.maskedEnvKey = info.maskedEnvKey || null;
+          if (serverStatus.storageMode === 'browser') { updateKeyIndicator(); return; }
           const uRes = await fetch('/api/user-data');
           if (uRes.ok) {
             const uJson = await uRes.json();
@@ -3021,7 +3023,7 @@ ${topicPrompt}`;
           const ep = episodes.find(x => x.id === id);
           if (!ep) return;
           const txt = getSeriesDisplayedText(ep);
-          window.open('https://t.me/share/url?url=' + encodeURIComponent('https://muzakrawy.workers.dev') + '&text=' + encodeURIComponent(txt), '_blank');
+          window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.origin) + '&text=' + encodeURIComponent(txt), '_blank');
         });
       });
 
@@ -3152,7 +3154,9 @@ ${topicPrompt}`;
       document.getElementById('apiKeyInput').value = localBrowserApiKey || '';
       document.getElementById('modelSelectInput').value = savedState.model || 'gemini-3.8-flash';
       const serverNote = document.getElementById('serverEnvStatusNote');
-      if (serverStatus.available) {
+      if (serverStatus.available && serverStatus.storageMode === 'browser') {
+        serverNote.textContent = 'نسخة Cloudflare: تُحفظ تعديلاتك ومفتاحك في هذا المتصفح فقط، ويُرسل المفتاح مع طلباتك إلى Gemini عبر الخادم. استخدم متصفحك الشخصي؛ مسح بيانات المتصفح يحذف الحفظ المحلي.';
+      } else if (serverStatus.available) {
         serverNote.innerHTML = serverStatus.hasEnvKey
           ? ('✅ السيرفر المحلي متصل ومفتاح <span class="font-mono">.env</span> محفوظ بأمان (' + escapeHtml(serverStatus.maskedEnvKey) + '). يمكنك تغييره أو الاختبار بالأسفل.')
           : '🟢 السيرفر المحلي متصل (<span class="font-mono">localhost:3456</span>). الصق المفتاح واضغط حفظ ليُخزن بأمان في ملف <span class="font-mono">.env</span> المحمي.';
@@ -3177,7 +3181,7 @@ ${topicPrompt}`;
         else localStorage.removeItem(KEY_VAULT_STORAGE);
       } catch (e) {}
 
-      if (serverStatus.available && val) {
+      if (serverStatus.available && serverStatus.storageMode !== 'browser' && val) {
         try {
           const r = await fetch('/api/save-key', {
             method: 'POST',
@@ -3201,7 +3205,7 @@ ${topicPrompt}`;
       localBrowserApiKey = '';
       document.getElementById('apiKeyInput').value = '';
       try { localStorage.removeItem(KEY_VAULT_STORAGE); } catch (e) {}
-      if (serverStatus.available) {
+      if (serverStatus.available && serverStatus.storageMode !== 'browser') {
         await fetch('/api/save-key', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

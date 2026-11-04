@@ -6,3 +6,8 @@ node_modules/
 ff/
 .DS_Store
 Thumbs.db
+
+dist/
+.wrangler/
+.dev.vars
+.dev.vars.*

@@ -5,7 +5,11 @@
   "type": "module",
   "main": "server.mjs",
   "scripts": {
-    "start": "node server.mjs"
+    "start": "node server.mjs",
+    "build:cloudflare": "node scripts/build-cloudflare.mjs",
+    "dev:cloudflare": "npm run build:cloudflare && wrangler dev",
+    "deploy:cloudflare": "npm run build:cloudflare && wrangler deploy",
+    "test": "npm run build:cloudflare && node --test tests/*.test.mjs"
   },
   "keywords": [
     "mozakrawi",
@@ -16,5 +20,8 @@
     "psychology"
   ],
   "author": "Dr. Mahmoud",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "wrangler": "4.157.0"
+  }
 }
