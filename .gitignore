@@ -1,0 +1,8 @@
+.env
+.env.*
+!.env.example
+studio-user-data.json
+node_modules/
+ff/
+.DS_Store
+Thumbs.db

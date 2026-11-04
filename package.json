@@ -1,0 +1,20 @@
+{
+  "name": "mozakrawi-motivation-content-studio",
+  "version": "1.0.0",
+  "description": "منظومة واستوديو محتوى مذاكراوي للذكاء الاصطناعي — بنك البوستات وخطة ٩ شهور وسلسلة بعد أول مطب ورواية الهوامش",
+  "type": "module",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "keywords": [
+    "mozakrawi",
+    "thanaweya-amma",
+    "motivation",
+    "content-studio",
+    "gemini-ai",
+    "psychology"
+  ],
+  "author": "Dr. Mahmoud",
+  "license": "UNLICENSED"
+}

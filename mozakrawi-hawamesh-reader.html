@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="sepia">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بعد أول مطب — هوامش على كتاب مستعمل | ستوديو القراءة والنشر</title>
+  
+  <!-- Approved Typography: Alexandria, IBM Plex Sans Arabic, IBM Plex Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;600;700;800;900&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --font-body: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-heading: 'Alexandria', 'IBM Plex Sans Arabic', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+      --font-margin: 'Alexandria', cursive, sans-serif;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* THEME 1: SEPIA (Vintage Azbakeya Paper) */
+    html[data-theme="sepia"] {
+      --bg-canvas: #f6efe2;
+      --bg-surface: #fcf8f2;
+      --bg-surface-elevated: #ffffff;
+      --bg-surface-subtle: #ede3d1;
+      --border-color: #dfd2bd;
+      --border-strong: #c8b79b;
+      
+      --text-main: #2d241e;
+      --text-muted: #6e5d4e;
+      --text-faint: #9c8b79;
+      
+      --accent-primary: #8a3b14;
+      --accent-primary-hover: #712f0e;
+      --accent-soft: rgba(138, 59, 20, 0.08);
+      --accent-gold: #c98a2c;
+      
+      --pencil-ink: #3b312b;
+      --pencil-bg: #fffbf2;
+      --pencil-border: #d4a373;
+      
+      --code-bg: #ede4d3;
+      --badge-science-bg: #e6f0ea;
+      --badge-science-text: #1b5e37;
+      
+      --shadow-sm: 0 2px 6px rgba(45, 36, 30, 0.05);
+      --shadow-md: 0 8px 24px rgba(45, 36, 30, 0.08);
+      --shadow-lg: 0 16px 40px rgba(45, 36, 30, 0.12);
+    }
+
+    /* THEME 2: DARK (Midnight Obsidian) */
+    html[data-theme="dark"] {
+      --bg-canvas: #0f1115;
+      --bg-surface: #171a21;
+      --bg-surface-elevated: #1f232d;
+      --bg-surface-subtle: #272d3b;
+      --border-color: #2b3242;
+      --border-strong: #3d465c;
+      
+      --text-main: #f1f3f7;
+      --text-muted: #9ba3b5;
+      --text-faint: #636c80;
+      
+      --accent-primary: #f28b46;
+      --accent-primary-hover: #fa9d5f;
+      --accent-soft: rgba(242, 139, 70, 0.12);
+      --accent-gold: #e5b056;
+      
+      --pencil-ink: #f0ece1;
+      --pencil-bg: #222733;
+      --pencil-border: #645543;
+      
+      --code-bg: #141720;
+      --badge-science-bg: #132a21;
+      --badge-science-text: #4ade80;
+      
+      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.65);
+    }
+
+    /* THEME 3: LIGHT (Crisp Editorial) */
+    html[data-theme="light"] {
+      --bg-canvas: #f8f9fa;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #ffffff;
+      --bg-surface-subtle: #f1f3f5;
+      --border-color: #e2e8f0;
+      --border-strong: #cbd5e1;
+      
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      
+      --accent-primary: #0284c7;
+      --accent-primary-hover: #0369a1;
+      --accent-soft: rgba(2, 132, 199, 0.08);
+      --accent-gold: #d97706;
+      
+      --pencil-ink: #1e293b;
+      --pencil-bg: #f8fafc;
+      --pencil-border: #94a3b8;
+      
+      --code-bg: #f1f5f9;
+      --badge-science-bg: #ecfdf5;
+      --badge-science-text: #059669;
+      
+      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.85;
+      font-size: 17px;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* TOP APP BAR */
+    header.app-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(10px);
+    }
+    .header-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--accent-primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .brand-text h1 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+    .brand-text span {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .view-mode-tabs {
+      display: flex;
+      background: var(--bg-surface-subtle);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      gap: 4px;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+    .tab-btn.active {
+      background: var(--bg-surface-elevated);
+      color: var(--accent-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .icon-btn {
+      background: var(--bg-surface-subtle);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 16px;
+    }
+    .icon-btn:hover {
+      border-color: var(--border-strong);
+      background: var(--bg-surface-elevated);
+      transform: translateY(-1px);
+    }
+
+    /* MAIN APP LAYOUT */
+    .app-layout {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* SIDEBAR NAVIGATION */
+    aside.sidebar {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 86px;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+    }
+    .sidebar-header {
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .sidebar-header h2 {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .reading-progress-bar {
+      margin-top: 10px;
+      height: 6px;
+      background: var(--bg-surface-subtle);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .reading-progress-fill {
+      height: 100%;
+      background: var(--accent-primary);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .nav-search {
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .nav-search input {
+      width: 100%;
+      padding: 9px 36px 9px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: var(--bg-canvas);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      outline: none;
+      transition: var(--transition);
+    }
+    .nav-search input:focus {
+      border-color: var(--accent-primary);
+      background: var(--bg-surface-elevated);
+    }
+    .nav-search-icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-faint);
+      pointer-events: none;
+      font-size: 14px;
+    }
+
+    .nav-week-group {
+      margin-bottom: 18px;
+    }
+    .nav-week-title {
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-faint);
+      margin-bottom: 8px;
+      padding-right: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-items-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .nav-item-btn {
+      width: 100%;
+      text-align: right;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+      gap: 10px;
+    }
+    .nav-item-btn:hover {
+      background: var(--bg-surface-subtle);
+    }
+    .nav-item-btn.active {
+      background: var(--accent-soft);
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      font-weight: 700;
+    }
+    .nav-item-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .nav-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: var(--bg-surface-subtle);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-item-btn.active .nav-num {
+      background: var(--accent-primary);
+      color: #fff;
+    }
+    .nav-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--text-faint);
+      flex-shrink: 0;
+    }
+    .nav-status-dot.published {
+      background: #10b981;
+    }
+
+    /* READING AREA / MAIN CONTENT */
+    main.content-area {
+      min-width: 0;
+    }
+
+    /* HERO CARD */
+    .hero-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-gold));
+    }
+    .hero-top-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-family: var(--font-heading);
+    }
+    .badge-primary {
+      background: var(--accent-soft);
+      color: var(--accent-primary);
+    }
+    .badge-gold {
+      background: rgba(201, 138, 44, 0.15);
+      color: var(--accent-gold);
+    }
+    .badge-science {
+      background: var(--badge-science-bg);
+      color: var(--badge-science-text);
+    }
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .hero-concept {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--accent-primary);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--accent-primary-hover);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+    .btn-outline {
+      background: transparent;
+      border-color: var(--border-strong);
+      color: var(--text-main);
+    }
+    .btn-outline:hover {
+      background: var(--bg-surface-subtle);
+    }
+
+    /* CHAPTER CONTAINER */
+    .chapter-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+    .chapter-header {
+      margin-bottom: 30px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .chapter-meta-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .chapter-date {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .chapter-main-title {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--text-main);
+      margin-bottom: 18px;
+      line-height: 1.35;
+    }
+
+    /* EPIGRAPH / LITERARY QUOTE */
+    .epigraph-box {
+      background: var(--bg-surface-subtle);
+      border-right: 4px solid var(--accent-gold);
+      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 28px;
+    }
+    .epigraph-text {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      line-height: 1.6;
+    }
+    .epigraph-source {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* STORY PROSE */
+    .story-body {
+      font-size: 18px;
+      line-height: 2.05;
+      color: var(--text-main);
+      margin-bottom: 36px;
+      text-align: justify;
+    }
+    .story-body p {
+      margin-bottom: 20px;
+      text-indent: 1.8em;
+    }
+    .story-body p:first-of-type {
+      text-indent: 0;
+    }
+    .story-body p:first-of-type::first-letter {
+      font-family: var(--font-heading);
+      font-size: 2.2em;
+      font-weight: 800;
+      color: var(--accent-primary);
+      float: right;
+      padding-left: 10px;
+      line-height: 1;
+    }
+
+    /* OMAR'S HANDWRITTEN MARGIN */
+    .margin-note-card {
+      background: var(--pencil-bg);
+      border: 2px dashed var(--pencil-border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 32px 0;
+      position: relative;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+    }
+    .margin-pin {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: var(--accent-gold);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 2px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .margin-quote {
+      font-family: var(--font-margin);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--pencil-ink);
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .margin-author {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* LINE FOR YOU & QUESTION */
+    .resonance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 28px 0;
+    }
+    @media (max-width: 768px) {
+      .resonance-grid { grid-template-columns: 1fr; }
+    }
+    .res-box {
+      padding: 18px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface-elevated);
+    }
+    .res-label {
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .res-line .res-label { color: var(--accent-primary); }
+    .res-question .res-label { color: var(--accent-gold); }
+    .res-text {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.6;
+      color: var(--text-main);
+    }
+
+    /* ACTION BAR FOR CHAPTER */
+    .chapter-actions-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .copy-buttons-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn-sm {
+      padding: 7px 12px;
+      font-size: 12.5px;
+      border-radius: 6px;
+    }
+
+    /* SCIENCE BLUEPRINT CARDS (Revealed in Science Mode or Collapsible) */
+    .science-blueprint-card {
+      background: var(--bg-surface-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-top: 28px;
+    }
+    .science-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      cursor: pointer;
+    }
+    .science-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .science-title {
+      font-family: var(--font-heading);
+      font-size: 15.5px;
+      font-weight: 800;
+      color: var(--badge-science-text);
+    }
+    .science-details {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      font-size: 14.5px;
+      line-height: 1.7;
+    }
+    .sc-field {
+      background: var(--bg-surface);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+    }
+    .sc-field strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 12px;
+      color: var(--text-faint);
+      margin-bottom: 4px;
+    }
+    .sc-sources {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      direction: ltr;
+      text-align: left;
+    }
+    .sc-sources li {
+      margin-bottom: 4px;
+      list-style-position: inside;
+    }
+
+    /* CAPSULE DRAWER / CODE BOX */
+    .capsule-box {
+      margin-top: 20px;
+      background: var(--code-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      position: relative;
+    }
+    .capsule-box pre {
+      font-family: var(--font-body);
+      font-size: 14px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.7;
+      color: var(--text-main);
+    }
+    .capsule-copy-floating {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    /* HARVEST FINALE SECTION */
+    .harvest-container {
+      background: var(--bg-surface);
+      border: 2px solid var(--accent-gold);
+      border-radius: var(--radius-lg);
+      padding: 44px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .harvest-tag {
+      position: absolute;
+      top: -14px;
+      right: 32px;
+      background: var(--accent-gold);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 13px;
+      padding: 4px 16px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .harvest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .harvest-tool-card {
+      background: var(--bg-surface-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .harvest-tool-card:hover {
+      border-color: var(--accent-primary);
+      background: var(--bg-surface-elevated);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .harvest-tool-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-primary);
+      margin-bottom: 4px;
+    }
+    .harvest-tool-name {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+    .harvest-tool-line {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* FOOTER */
+    footer.app-footer {
+      text-align: center;
+      padding: 32px 20px 48px;
+      font-size: 14px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      margin-top: 40px;
+    }
+    footer.app-footer p {
+      margin-bottom: 8px;
+    }
+    .footer-stamp {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* TOAST NOTIFICATION */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #1e293b;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      z-index: 1000;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      header.app-bar, aside.sidebar, .chapter-actions-bar, .hero-actions, .view-mode-tabs {
+        display: none !important;
+      }
+      .app-layout {
+        display: block;
+        padding: 0;
+      }
+      .chapter-card, .harvest-container {
+        border: none;
+        box-shadow: none;
+        page-break-after: always;
+        padding: 0;
+      }
+      body {
+        background: #fff;
+        color: #000;
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .app-layout {
+        grid-template-columns: 1fr;
+      }
+      aside.sidebar {
+        position: relative;
+        top: 0;
+        max-height: 380px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- APP BAR -->
+  <header class="app-bar">
+    <div class="header-inner">
+      <div class="brand-wrap">
+        <div class="brand-badge">م</div>
+        <div class="brand-text">
+          <h1>بعد أول مطب — هوامش على كتاب مستعمل</h1>
+          <span>رواية قصيرة في ١٢ رسالة • نوفمبر ٢٠٢٦</span>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <!-- View mode tabs -->
+        <div class="view-mode-tabs" role="tablist">
+          <button class="tab-btn active" data-mode="reader" onclick="switchViewMode('reader')">
+            <span>📖</span> وضع الرواية
+          </button>
+          <button class="tab-btn" data-mode="science" onclick="switchViewMode('science')">
+            <span>🔬</span> كواليس العلوم
+          </button>
+          <button class="tab-btn" data-mode="broadcast" onclick="switchViewMode('broadcast')">
+            <span>📢</span> أدوات النشر
+          </button>
+        </div>
+
+        <!-- Audio ambience toggle -->
+        <button class="icon-btn" id="audioBtn" title="صوت هادئ للتركيز (مطر خفيف)" onclick="toggleAmbience()">
+          🌧️
+        </button>
+
+        <!-- Theme switch -->
+        <button class="icon-btn" id="themeBtn" title="تغيير الثيم (ورق أزبكية / داكن / فاتح)" onclick="cycleTheme()">
+          📜
+        </button>
+
+        <!-- Export Markdown -->
+        <a href="mozakrawi-hawamesh-novella.md" download class="icon-btn" title="تحميل ملف الماركداون الكامل">
+          ⬇️
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- APP LAYOUT -->
+  <div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>
+          <span>فهرس الرواية</span>
+          <span style="font-size: 13px; font-weight: normal; color: var(--text-muted);" id="progressText">٠ / ١٢</span>
+        </h2>
+        <div class="reading-progress-bar">
+          <div class="reading-progress-fill" id="progressBar"></div>
+        </div>
+      </div>
+
+      <div class="nav-search">
+        <input type="text" id="chapterSearch" placeholder="ابحث في الفصول والاقتباسات..." oninput="filterNav()">
+        <span class="nav-search-icon">🔍</span>
+      </div>
+
+      <nav id="sidebarNav">
+        <!-- Injected via JavaScript -->
+      </nav>
+    </aside>
+
+    <!-- CONTENT AREA -->
+    <main class="content-area">
+
+      <!-- HERO / INTRO CARD -->
+      <section class="hero-card">
+        <div class="hero-top-meta">
+          <span class="badge badge-primary">سلسلة نوفمبر الأدبية والسلوكية</span>
+          <span class="badge badge-gold">١٢ محطة + محطة حصاد</span>
+          <span class="badge badge-science">١٢ أداة سلوكية جذرية متراكمة</span>
+        </div>
+        <h2 class="hero-title">هوامش على كتاب مستعمل</h2>
+        <p class="hero-concept">
+          بنت جابت ١١ من ٣٠ في أول امتحان، واشترت بالصدفة نسخة قديمة من «الأيام» لطه حسين من سور الأزبكية بخمسة جنيه. في هوامش الكتاب لقت يوميات ولد كان في تالتة ثانوي سنة ٢٠٠٨، وقع في نفس الحفرة.. وطلع منها هامش ورا هامش. ١٢ رسالة، مفيهاش ولا نصيحة مباشرة، وفي آخر الشهر بنكشف الـ ١٢ أداة كنظام تشغيل متكامل يحل المشكلة من جذرها.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="scrollToChapter(1)">
+            <span>ابدأ القراءة من الفصل الأول</span> ←
+          </button>
+          <button class="btn btn-outline" onclick="scrollToHarvest()">
+            <span>انتقل مباشرة لمحطة الحصاد الختامية</span> 🌾
+          </button>
+        </div>
+      </section>
+
+      <!-- CHAPTERS CONTAINER -->
+      <div id="chaptersContainer">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- HARVEST SECTION -->
+      <section class="harvest-container" id="harvestSection">
+        <span class="harvest-tag">محطة الحصاد الشاملة</span>
+        <div class="chapter-meta-line" style="margin-top: 10px;">
+          <span class="chapter-date">الجمعة ٢٧ نوفمبر • ٠٨:٠٠ م (البث الختامي)</span>
+          <span class="badge badge-gold">الحل الجذري المتراكم</span>
+        </div>
+        <h2 class="chapter-main-title">الهوامش اللي كتبتها من غير ما تاخد بالك</h2>
+
+        <div class="epigraph-box">
+          <div class="epigraph-text">«إذا الشّعْبُ يَوْمَاً أرَادَ الحَيَاةَ • فَلابدّ أنْ يَسْتَجِيبَ القَدَر»</div>
+          <div class="epigraph-source">— أبو القاسم الشابي</div>
+        </div>
+
+        <div class="story-body" id="harvestIntro">
+          <!-- Injected via JS -->
+        </div>
+
+        <h3 style="font-family: var(--font-heading); font-size: 20px; font-weight: 800; margin: 28px 0 16px; color: var(--accent-gold);">
+          ⚙️ نظام التشغيل المتكامل: ١٢ أداة انزرعت في عقلك خطوة بخطوة
+        </h3>
+
+        <div class="harvest-grid" id="harvestGrid">
+          <!-- Injected via JS -->
+        </div>
+
+        <div class="story-body" id="harvestOutro" style="margin-top: 28px;">
+          <!-- Injected via JS -->
+        </div>
+
+        <div class="resonance-grid">
+          <div class="res-box res-line">
+            <div class="res-label">💡 كلمة الختام:</div>
+            <div class="res-text">الحل مش إرادة خرافية، الحل نظام بيشيل عنك لما إرادتك تقع.</div>
+          </div>
+          <div class="res-box res-question">
+            <div class="res-label">💬 سؤال الحصاد للطلبة:</div>
+            <div class="res-text">أنهي هامش من الـ ١٢ حسيت إنه اتكتب عشانك أنت بالذات؟</div>
+          </div>
+        </div>
+
+        <div class="chapter-actions-bar">
+          <div class="copy-buttons-group">
+            <button class="btn btn-primary btn-sm" onclick="copyHarvestFull()">
+              📋 نسخ بوست الحصاد الكامل للنشر
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="copyHarvestCapsule()">
+              📱 نسخ كبسولة الحصاد
+            </button>
+          </div>
+          <span style="font-size: 13px; color: var(--text-muted);">
+            جاهز للنشر على فيسبوك وتليجرام وواتساب
+          </span>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    <p class="footer-stamp">© Created by Dr. Mahmoud • جميع الحقوق محفوظة 2026</p>
+    <p>سلسلة «بعد أول مطب — هوامش على كتاب مستعمل» • تصميم ستوديو المحتوى الأدبي والسلوكي</p>
+  </footer>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast">
+    <span>✓</span>
+    <span id="toastMsg">تم النسخ بنجاح!</span>
+  </div>
+
+  <!-- SCRIPT DATA & APP LOGIC -->
+  <script>
+    const APP_DATA = {"meta":{"seriesTitle":"بعد أول مطب — هوامش على كتاب مستعمل","subtitle":"رواية قصيرة في ١٢ رسالة + محطة حصاد • نوفمبر ٢٠٢٦","hashtags":"#هوامش_بعد_أول_مطب #بعد_أول_مطب #مذاكراوي #تالتة_ثانوي","publicConcept":"بنت جابت ١١ من ٣٠ في أول امتحان، واشترت بالصدفة نسخة قديمة من «الأيام» لطه حسين من سور الأزبكية بخمسة جنيه. في هوامش الكتاب لقت يوميات ولد كان في تالتة ثانوي سنة ٢٠٠٨، وقع في نفس الحفرة.. وطلع منها هامش ورا هامش. ١٢ رسالة، ومفيهاش ولا نصيحة مباشرة. وفي آخر الشهر هتكتشف إنك كنت بتبني نظامك من غير ما تاخد بالك.","teamStrategy":"المنهج الخفي: كل هامش بيزرع أداة واحدة مثبتة علمياً جوه مشهد، من غير ما نسميها ولا نقول «اعمل». الأدوات بتتراكم بترتيب مقصود: نشيل الحِمل العاطفي (١–٣) ← نشيل الاحتكاك وأسباب الهروب (٤–٦) ← نعالج ضغط الناس والجسم (٧–٩) ← نركّب طريقة التعلم والامتحان والهوية (١٠–١٢). محطة الحصاد بتكشف الأدوات الـ ١٢ كنظام واحد متكامل = الحل الجذري.","scheduleNote":"رسالة ١ اتنقلت للاثنين ٢ نوفمبر (إطلاق خاص) لأن يوم الأحد ١ نوفمبر فات؛ باقي الجدول ثابت على الأحد · الثلاثاء · الخميس."},"weeks":[{"n":1,"title":"الباب الأول: الوقعة","range":"٢ – ٥ نوفمبر","line":"من الصدمة.. لفهمها.","secretly":"شيل الحِمل العاطفي اللي بيغذي التسويف، وحوّل الامتحان من حكم لبيانات، واربط النية بمكان وزمان."},{"n":2,"title":"الباب الثاني: الهروب","range":"٨ – ١٢ نوفمبر","line":"ليه بنهرب.. ومين اللي يشيل عننا.","secretly":"نقل عبء الالتزام من «الإرادة» للبيئة: بداية صغيرة، احتكاك أعلى للمشتتات، ومكافأة مربوطة بالمهمة التقيلة."},{"n":3,"title":"الباب الثالث: الناس","range":"١٥ – ١٩ نوفمبر","line":"المقارنة، والبيت، والجسم اللي بننساه.","secretly":"استبدال المقارنة الاجتماعية بالمقارنة الزمنية، وجعل التقدم مرئي للأهل، وتصحيح علاقة الطالب بالنوم."},{"n":4,"title":"الباب الرابع: العودة","range":"٢٢ – ٢٦ نوفمبر","line":"الطريقة، والامتحان، والشخص الجديد.","secretly":"تركيب طريقة تعلم فعالة (استرجاع + تباعد)، إدارة قلق الامتحان، وتثبيت هوية جديدة تخلي النظام يكمل بعد الشهر."}],"chapters":[{"id":"h1","n":1,"week":1,"ordinal":"الهامش الأول","dayName":"الاثنين","dateLabel":"٢ نوفمبر ٢٠٢٦","time":"٨:٠٠ مساءً","launchNote":"إطلاق خاص","title":"١١ من ٣٠","epigraph":"أُعلِّلُ النفسَ بالآمالِ أرقبُها … ما أضيقَ العيشَ لولا فسحةُ الأملِ","epigraphSource":"الطغرائي — لامية العجم","body":"الورقة كانت مطوية أربع مرات في جيب المريلة، وكل طيّة كانت بتحاول تصغّر الرقم شوية: ١١ من ٣٠.\n\nسلمى ما راحتش الدرس. ركبت المترو من غير ما تقرر، ونزلت في العتبة من غير ما تقرر، ولقت رجليها ماشية بيها ناحية سور الأزبكية؛ المكان اللي أبوها دايماً بيحكي إنه اشترى منه أول رواية في حياته بخمسة وعشرين قرش.\n\nالكتب هناك مرصوصة على الفرشات زي ناس واقفة في طابور، مستنية حد يختارها. كتب اتقرت واتنست، واتباعت واترمت، وفضلت برضه مستنية.\n\nوقفت قدام فرشة راجل عجوز لابس نضارة دراعها متربط بفتلة. مدّ إيده من غير ما تسأل، وإداها كتاب جلدته باهتة، لونها لون الشاي الخفيف:\n«الأيام.. طه حسين. خديه بخمسة جنيه.»\n«أنا مش جاية أشتري.»\n«ما هو اللي مش جاي يشتري.. هو اللي بيلاقي.»\n\nدفعت الخمسة جنيه. يمكن عشان تخلص من الكلام، ويمكن عشان كانت محتاجة تمسك حاجة بإيديها غير الورقة اللي في جيبها.\n\nفي المترو وهي راجعة فتحت الكتاب. على أول صفحة بيضا، بخط ولد مستعجل: «عمر م. — تالتة ثانوي — ٢٠٠٨». وبعدها بدأ طه حسين يحكي عن الولد الصغير اللي فاكر سياج القصب اللي قدام باب البيت؛ كان شايف إن الدنيا بتخلص عنده، وكان بيحسد الأرانب اللي بتنط من فوقه.\n\nوتحت السطور، بقلم رصاص باهت:\n\n✎ «وأنا كمان كنت فاكر إن الدنيا بتخلص عند درجة.»\n\nقلبت الصفحة. الهوامش كانت مليانة. مش تلخيص ولا شرح.. كانت يوميات.\n\n✎ «١ نوفمبر ٢٠٠٨ — جبت ٩ من ٢٠ في أول امتحان فيزيا. ما قلتش لحد. قعدت في الحمام نص ساعة، وحطيت مية على وشي كتير عشان ماما ما تاخدش بالها من عينيا.»\n\nسلمى ضحكت ضحكة صغيرة مالهاش علاقة بالفرح. ضحكة اللي وقع في حفرة، وبص جنبه، لقى حد تاني قاعد فيها من زمان.\n\n✎ «٢ نوفمبر — قريت إن طه حسين وهو صغير اتلخبط قدام أبوه في التسميع، ونسي اللي كان فاكر إنه حافظه، واتكسف كسفة عمره ما نسيها. وبعدين بقى طه حسين.\nيعني الوقعة مش هي اللي بتقرر. اللي بيقرر هو انت هتعمل إيه بليلة الوقعة.\nوأنا عملت إيه؟ كتبت الدرجة هنا، وكتبت جنبها: سامحتك.\nمش عشان اللي حصل كويس.. عشان مش هقدر أكمل وأنا شايلك على ضهري.»\n\nالمترو وقف في محطة ما تعرفش اسمها. ناس نزلت، وناس طلعت، وولد صغير قعد قصادها بياكل ترمس من قرطاس.\n\nطلّعت الورقة المطوية من جيبها. فردتها طيّة طيّة. وبصّت للرقم ١١ لأول مرة من غير ما تشيح بعينها.\n\nوفي الحتة البيضا تحت الدرجة، كتبت بخط صغير مهزوز:\n\n✍ «سامحتك.»\n\nمش لأن الرقم حلو. لأنه تقيل.. واللي جاي محتاج ضهر فاضي.","lastMargin":"مش كل اللي بيقع بيبقى مكسور.. فيه ناس بتقع عشان تلاقي حاجة كانت مرمية على الأرض.","lineForYou":"لو عندك ورقة زي ورقة سلمى.. افتحها الليلة. وتحت الرقم، اكتب الكلمة اللي كتبها عمر.","question":"لو لقيت كتاب فيه هوامش حد وقع قبلك.. نفسك يكون كاتبلك فيه إيه؟","capsule":"سلمى جابت ١١ من ٣٠، واشترت كتاب بخمسة جنيه من سور الأزبكية.. ولقت في هوامشه ولد وقع قبلها بتمنتاشر سنة، كاتب تحت درجته كلمة واحدة: «سامحتك». الحكاية بدأت.","hidden":{"tool":"مسامحة الذات بعد الوقعة","toolEn":"Self-forgiveness / Self-compassion","mechanism":"الوقعة بتلزق في المهمة شعور سلبي (ذنب/عار)، والمخ بيهرب من أي حاجة مربوطة بالشعور ده فيزيد التسويف. مسامحة الذات بتفك الربط، فالرجوع للمادة يبقى أخف.","device":"كلمة «سامحتك» اللي عمر كتبها جنب درجته، وسلمى كررتها تحت الـ ١١.","compounding":"بتشيل الوزن العاطفي اللي لو فضل هيبوّظ كل الأدوات اللي جاية.","sources":["Wohl, Pychyl & Bennett (2010). I forgive myself, now I can study. Personality and Individual Differences, 48(7), 803–808.","Breines & Chen (2012). Self-compassion increases self-improvement motivation. Personality and Social Psychology Bulletin, 38(9), 1133–1143."],"caution":"⚠ محتاج تحقق: مشهد اتلخبط طه حسين في التسميع قدام أبوه، ومشهد سياج القصب والأرانب في أول «الأيام» — الصياغة في القصة متعمّدة تكون عامة؛ راجعوا الجزء الأول من الكتاب قبل النشر."}},{"id":"h2","n":2,"week":1,"ordinal":"الهامش الثاني","dayName":"الثلاثاء","dateLabel":"٣ نوفمبر ٢٠٢٦","time":"٨:٠٠ مساءً","title":"خريطة باللون الأحمر","epigraph":"ما كلُّ ما يتمنّى المرءُ يُدركُهُ … تجري الرياحُ بما لا تشتهي السفنُ","epigraphSource":"المتنبي","body":"تاني يوم، سلمى عملت حاجة عمرها ما عملتها: طلّعت ورقة الامتحان من الدرج بنفسها.\n\nمش عشان تعيط عليها. عشان عمر كاتب في هامش صفحة ٢٣:\n\n✎ «٣ نوفمبر ٢٠٠٨ — جدي الله يرحمه كان صياد في بحيرة البرلس. كان بيقولي: الريح عمرها ما هتمشي على مزاجك يا واد، بس القلع في إيدك. المركب ما بتمشيش عكس الريح.. بتمشي متعرّجة، شمال شوية ويمين شوية، وبتوصل.»\n\n✎ «النهارده طلّعت ورقة الفيزيا، وما بصيتش على الأسئلة اللي ما كنتش عارفها. بصيت على الأسئلة اللي كنت متأكد منها.. وطلعت غلط. دي اللي وجعتني. ودي اللي علّمت عليها بالأحمر.»\n\nوتحت الكلام، جدول صغير مرسوم بإيد مش ثابتة، تلات خانات: «كنت فاكر» — «الحقيقة» — «الفخ كان فين».\n\nسلمى جابت قلم أحمر.\n\nالسؤال الرابع: كانت متأكدة إن الإجابة (ب). كتبتها في الامتحان من غير ما تتردد ثانية. الإجابة (د).\n\n✍ «كنت فاكرة: إن الذرة اللي حجمها أكبر طاقة تأينها أكبر.\nالحقيقة: العكس.\nالفخ: إني حفظت الجملة بالمقلوب من أول يوم، وكل مرة براجعها بعيني بأكّد الغلط.»\n\nالسؤال السابع: نفس الحكاية بلبس تاني. السؤال العاشر: ما كانتش جاهلة خالص.. كانت مستعجلة، وقرت «أقل» على إنها «أكبر».\n\nلما خلصت، كان قدامها تلات سطور حمرا بس. تلاتة.\n\nوفجأة الرقم ١١ اتشقّ نصين: نص كان جهل حقيقي، محتاج مذاكرة وتعب. ونص كان فخاخ صغيرة.. فخاخ لو اتشالت كانت الورقة هتبقى ١٧.\n\n١٧ مش رقم يتعلّق على التلاجة. بس ١٧ مش «أنا فاشلة».\n\nفي آخر الصفحة، عمر كاتب بخط أوضح، كإنه كان هادي وهو بيكتبه:\n\n✎ «الغلطة اللي كنت متأكد منها أحسن مدرس في الدنيا. عشان لما بتتخض فيها، دماغك بيحفر الصح أعمق من أي حاجة قريتها وانت مرتاح.\nما ترميش ورقة الامتحان. دي مش شهادة وفاة.. دي خريطة الألغام.»\n\nسلمى افتكرت بيت المتنبي اللي المدرسة كتبته على السبورة السنة اللي فاتت وهي بتشرح الحكمة: «تجري الرياح بما لا تشتهي السفن». ساعتها كانت شايفاه بيت حزين، بيت ناس مستسلمة.\n\nالليلة شافته بعين جد عمر: الريح فعلاً مش بتاعتك. بس اللي اتعلم القلع.. بيوصل برضه، حتى لو متعرّج.\n\nلزقت ورقة الامتحان في أول صفحة في كشكول جديد، وكتبت على الجلدة بالأحمر: «خريطة الألغام».\n\nومن ساعتها، كل ورقة امتحان بترجعلها، أول حاجة بتدور عليها مش الدرجة.. بتدور على الحاجات اللي كانت متأكدة منها.","lastMargin":"الريح مش بتاعتك.. القلع بتاعك.","lineForYou":"ورقة آخر امتحان لسه عندك؟ دوّر فيها على حاجة واحدة بس: السؤال اللي كنت متأكد منه.","question":"إيه أكتر غلطة كنت متأكد منها ١٠٠٪.. وطلعت غلط؟","capsule":"«الريح مش بتاعتك.. القلع بتاعك.» عمر رجع لورقة امتحانه، وما دورش على اللي ما يعرفوش.. دوّر على اللي كان متأكد منه وطلع غلط. وسلمى اكتشفت إن الـ ١١ كانت ١٧ مستخبية ورا تلات فخاخ.","hidden":{"tool":"تحليل الأخطاء + أثر التصحيح المفرط","toolEn":"Error analysis & the Hypercorrection Effect","mechanism":"الأخطاء اللي الطالب كان واثق منها بتتصحح وتثبت أقوى من غيرها لما يشوف الصح، لأن المفاجأة بتشد الانتباه. وتصنيف الغلط (جهل / فخ قراءة / حفظ مقلوب) بيحول الدرجة من حكم على الشخص لبيانات قابلة للإصلاح.","device":"جدول عمر بالأحمر «كنت فاكر / الحقيقة / الفخ» + كشكول «خريطة الألغام».","compounding":"كل امتحان جاي في الشهر (وفي السنة) بيبقى مصدر تحسين بدل مصدر جرح جديد.","sources":["Butterfield & Metcalfe (2001). Errors committed with high confidence are hypercorrected. Journal of Experimental Psychology: Learning, Memory, and Cognition, 27(6), 1491–1494.","Metcalfe (2017). Learning from errors. Annual Review of Psychology, 68, 465–489."],"caution":"المعلومة الكيميائية: نصف القطر الأكبر ← طاقة تأين أقل ✓ (صحيحة)."}},{"id":"h3","n":3,"week":1,"ordinal":"الهامش الثالث","dayName":"الخميس","dateLabel":"٥ نوفمبر ٢٠٢٦","time":"٨:٠٠ مساءً","title":"جواب من غير عنوان","epigraph":"اللي يحسب الحسابات.. في الهنا يبات","epigraphSource":"مثل مصري","body":"أسبوع كامل، كل ليلة الساعة ١٢، سلمى كانت بتعمل نفس الطقس: تقعد على السرير، تفتح نوتة الموبايل، وتكتب: «من بكرة هذاكر بجد.»\n\nوالصبح، «بكرة» كانت بتصحى قبلها وتهرب.\n\nالليلة دي فتحت «الأيام» وهي ناوية تقرا صفحتين قبل النوم، فلقت عمر سابقها للنقطة دي بتمنتاشر سنة.\n\n✎ «٥ نوفمبر ٢٠٠٨ — كتبت النهارده للمرة السابعة: هذاكر كويس. وللمرة السابعة ما حصلش. أنا مش كسلان.. أنا بقرر قرارات مالهاش عنوان.»\n\n✎ «عم سيد الفران اللي تحت البيت، الفرن عنده بيولّع الساعة تلاتة الفجر. سألته مرة: بتقوم إزاي كل يوم؟ بص لي كإني سألته بيتنفس إزاي، وقال: يا ابني أنا ما بقومش.. الساعة تلاتة هي اللي بتقومني. الأذان الأولاني يأذن، إيدي تروح على الكبريت. مافيش قعدة أفكر.»\n\n✎ «فكتبت قراراتي من جديد، بس المرة دي بعناوين:\nلما أرجع من الدرس وأحط الشنطة.. أفتح الكيمياء صفحة واحدة قبل ما أغيّر هدومي.\nلما أخلص الغدا.. أحل خمس مسايل قبل الشاي.\nلما صاحبي يرن ينزّلني.. أقوله بعد العشا.»\n\nسلمى قرت السطور تلات مرات. الكلام بسيط لدرجة تضحّك. بس فيه حاجة غريبة: القرارات دي مافيهاش «هحاول» ولا «بجد» ولا «من بكرة إن شاء الله». فيها مكان وزمان.. وفيها إيد بتتحرك قبل ما الدماغ يلحق يفاصل.\n\nافتكرت جدتها الله يرحمها. عمرها ما قالت «هصلي العصر». كانت بتقول «العصر يأذن وأنا أقوم». والفرق بين الجملتين زي الفرق بين بيت ليه وصف، وبيت ليه عنوان. الأول تعرف إنه موجود.. والتاني تعرف توصله.\n\nطلّعت ورقة لاصقة صفرا، وكتبت بخط كبير:\n\n✍ «لما أقفل باب الأوضة بعد الغدا.. أقعد على المكتب وأفتح أول صفحة بس.\nلما أمسك الموبايل بعد العشا.. أحطه في المطبخ وأنا راجعة.\nلما أحس إني عايزة أهرب من مسألة.. أكتب أول سطر فيها قبل ما أقوم.»\n\nولزقتها على حلق الباب، في المكان اللي عينها بتقع عليه وهي داخلة.\n\nتاني يوم رجعت من المدرسة، قفلت الباب، وقبل ما تسأل نفسها هي عايزة تذاكر ولا لأ.. كانت قاعدة.\n\nمش لأنها بقت أقوى من امبارح. لأن السؤال ما اتسألش أصلاً.\n\nاليوم ده ما ذاكرتش ست ساعات. ذاكرت ساعة وعشرين دقيقة. بس دي كانت أول ساعة وعشرين دقيقة من غير خناقة مع نفسها.\n\nفي آخر هامش الصفحة، عمر كاتب جملة بخط أصغر، كإنه مكسوف منها:\n\n✎ «النية لوحدها زي الجواب من غير عنوان.. حلو، بس هيوصل لمين؟»","lastMargin":"مش محتاج تبقى أقوى.. محتاج قرارك يبقى ليه عنوان.","lineForYou":"ورقة صفرا واحدة. وجملة واحدة بتبدأ بـ «لما».. ولزقها على حلق الباب.","question":"اكتب جملتك اللي بتبدأ بـ «لما» في كومنت.. وخليها شاهدة عليك.","capsule":"«النية لوحدها زي الجواب من غير عنوان.» عم سيد الفران ما بيقومش الساعة تلاتة.. الساعة تلاتة هي اللي بتقومه. وسلمى لزقت ورقة صفرا على حلق الباب، فيها تلات جمل بيبدأوا بـ «لما».","hidden":{"tool":"نوايا التنفيذ (لما… هعمل…)","toolEn":"Implementation Intentions (if–then plans)","mechanism":"ربط السلوك بإشارة محددة (مكان/وقت/حدث) بيخلي البداية تلقائية، فبنتخطى لحظة «التفاوض» اللي فيها الإرادة بتخسر.","device":"عم سيد الفران + قرارات عمر «لما… » + الورقة الصفرا على حلق الباب.","compounding":"بتبقى هي القالب اللي هتتعلق عليه كل العادات اللي جاية (الموبايل في المطبخ، النوم، الشرح).","sources":["Gollwitzer (1999). Implementation intentions: Strong effects of simple plans. American Psychologist, 54(7), 493–503.","Gollwitzer & Sheeran (2006). Implementation intentions and goal achievement: A meta-analysis of effects and processes. Advances in Experimental Social Psychology, 38, 69–119 (d ≈ 0.65)."],"caution":""}},{"id":"h4","n":4,"week":2,"ordinal":"الهامش الرابع","dayName":"الأحد","dateLabel":"٨ نوفمبر ٢٠٢٦","time":"٨:٠٠ مساءً","title":"الباب الموارب","epigraph":"أولُ الغيثِ قطرٌ.. ثم ينهمرُ","epigraphSource":"مثل عربي","body":"الأحد. أصعب يوم في الأسبوع، مش عشان فيه دروس كتير.. عشان فيه «أول». أول قعدة، أول صفحة، أول مسألة. والأول دايماً تقيل، زي باب حديد صدّى من قلة الفتح.\n\nسلمى قعدت قدام كتاب الفيزيا ربع ساعة كاملة من غير ما تفتحه. كانت حاسة إن الفصل كله واقف قدامها زي جبل، وإن أي مسألة هتبدأها هتجر وراها مية مسألة.\n\nمدت إيدها لـ«الأيام» كإنها بتستأذن من حد.\n\n✎ «٨ نوفمبر ٢٠٠٨ — اكتشفت إن المشكلة مش في المذاكرة. المشكلة في الدقيقة اللي قبلها. الدقيقة دي أتقل من الساعتين اللي بعدها.\nفعملت مع نفسي اتفاق غريب: هقعد أحل مسألة واحدة بس. لو بعدها عايز أقوم، أقوم ومحدش هيلومني. ولا مرة قمت. ولا مرة.»\n\n✎ «وفيه حاجة تانية قريتها في مجلة قديمة عند البقال: إن همنجواي، الكاتب الأمريكاني، كان بيبطّل يكتب وهو لسه عارف الجملة الجاية. ما كانش بيكمل لحد ما يفضى. كان بيسيب الباب موارب، عشان يدخل منه تاني يوم.»\n\n✎ «النهارده وأنا بحل آخر مسألة، وقفت قبل الخطوة الأخيرة بالظبط. كتبت القانون، وعوّضت، وسبت الناتج. ورحت أنام والمسألة بتنقر في دماغي زي عصفور على شباك.\nالصبح، أول ما قعدت.. الناتج كان مستنيني. خلصته في نص دقيقة. ولقتني بقلب الصفحة.»\n\nسلمى بصّت للكتاب المقفول قدامها، وحست بحاجة شبه الخجل. الخجل اللي بيحسه حد اكتشف إن الباب اللي فضل يخبط عليه ساعة.. كان مفتوح من الأول.\n\nفتحت الفيزيا. مسألة واحدة. مش الفصل. مسألة.\n\nحلّتها في سبع دقايق. والتانية جت لوحدها. والتالتة جت وهي مش واخدة بالها إنها بقت تالتة.\n\nالساعة عدت من غير ما تحس. وقبل ما تقوم، عملت اللي عمله عمر: سابت آخر مسألة قبل السطر الأخير، والقلم فوقها، والكشكول مفتوح.\n\nنامت وفي دماغها رقم ناقص.\n\nالصبح، وهي داخلة الأوضة بالمريلة قبل المدرسة بعشر دقايق، لقت عينها بتروح للكشكول لوحدها. قعدت. كتبت السطر الأخير. وقفلت.\n\nعشر دقايق بس. بس اليوم كله اتغير لونه؛ كإنها دخلت المدرسة وهي كسبانة أول جولة.\n\nبالليل، لما قعدت تذاكر، ما كانش فيه «أول». كان فيه «تكملة». والتكملة دايماً أخف.\n\nفي هامش الصفحة، عمر كاتب كلمتين بالعرض، كإنه كان مبسوط وهو بيكتبهم:\n\n✎ «القطرة الأولى ما بتنزلش لوحدها أبداً.»","lastMargin":"ما تقفلش الباب وانت خارج.. سيبه موارب، عشان بكرة تدخل من غير ما تخبط.","lineForYou":"الليلة، وانت بتقفل آخر مسألة.. ما تكتبش السطر الأخير.","question":"إيه أتقل «أول» في يومك؟ أول قعدة؟ أول صفحة؟ أول مسألة؟","capsule":"همنجواي كان بيبطّل يكتب وهو عارف الجملة الجاية. وعمر بقى يسيب آخر مسألة قبل السطر الأخير.. والصبح، المسألة هي اللي كانت بتناديه. «القطرة الأولى ما بتنزلش لوحدها أبداً.»","hidden":{"tool":"البداية الصغيرة + ترك المهمة غير مكتملة","toolEn":"Tiny start & the Ovsiankina resumption tendency","mechanism":"تصغير الخطوة الأولى بيقلل مقاومة البدء. والمهمة اللي اتقطعت قبل نهايتها بتخلق ميل طبيعي للرجوع وإكمالها، فبداية الجلسة الجاية تبقى «تكملة» مش «بداية».","device":"اتفاق «مسألة واحدة بس» + ترك الناتج الأخير مفتوح على المكتب.","compounding":"بتقتل «رهبة البداية» اللي هي أكبر سبب للتراكمات، وبتجهز للأداة الجاية (البيئة).","sources":["Ovsiankina (1928). Die Wiederaufnahme unterbrochener Handlungen. Psychologische Forschung, 11, 302–379.","Hemingway (1935). Monologue to the Maestro: A High Seas Letter. Esquire — نصيحة التوقف وانت عارف اللي جاي."],"caution":"⚠ بنينا الفكرة على «الميل لاستكمال المهمة» (Ovsiankina) مش على «تذكر المهام المقطوعة أحسن» (Zeigarnik) لأن نتايج تكرار الأخير متضاربة في المراجعات الحديثة — محتاج تحقق لو حد اقتبسها كمعلومة علمية صريحة."}},{"id":"h5","n":5,"week":2,"ordinal":"الهامش الخامس","dayName":"الثلاثاء","dateLabel":"١٠ نوفمبر ٢٠٢٦","time":"٨:٠٠ مساءً","title":"درج مكنة الخياطة","epigraph":"البعيد عن العين.. بعيد عن القلب","epigraphSource":"مثل شعبي","body":"الموبايل كان مقلوب على وشه.\n\nسلمى كانت فخورة بالحركة دي. مقلوب، صامت، ومحطوط على طرف المكتب. «أنا مسيطرة».\n\nبس كل خمس دقايق، إيدها كانت بتتحرك لوحدها ناحيته وترجع في نص السكة، كإن فيه خيط رفيع رابط صباعها بالشاشة. وكل مرة كانت بترجع تقرا نفس السطر في الأحياء من الأول.\n\nفتحت «الأيام» تهرب من الموبايل.. فلقت عمر بيتكلم عن الموبايل. أقصد، عن الموبايل بتاع زمانه.\n\n✎ «١٠ نوفمبر ٢٠٠٨ — أنا ما عنديش مشكلة مع الموبايل. النوكيا بتاعي كل اللي فيه لعبة التعبان، والكارت أبو عشرة بيخلص في يومين. مشكلتي التليفزيون. والدش. وماتش الأهلي اللي بيبقى في وقت المذاكرة بالظبط، كإنه متفق معايا.»\n\n✎ «فضلت أسبوعين أقول لنفسي: أنا راجل وعندي إرادة. هقعد والتليفزيون شغال في الصالة وهذاكر عادي.\nالإرادة طلعت كدابة.»\n\n✎ «النهارده عملت حاجة مش راجل خالص: أخدت الريموت وإديته لستّي. ستّي حطته في درج مكنة الخياطة وقفلت عليه، وقالتلي بصوتها اللي فيه ضحكة مستخبية: عايزه؟ تعالى خده مني.\nمحدش في الدنيا بيروح ياخد حاجة من ستّي.\nوقعدت ساعتين ما بصيتش ناحية الصالة. مش عشان بقيت أقوى. عشان المسافة بقت أطول من الكسل.»\n\nسلمى ضحكت بصوت عالي لأول مرة من أسبوعين. صورة الريموت جوه درج مكنة الخياطة كانت حلوة بطريقة مش طبيعية.\n\nبصت للموبايل المقلوب. وفهمت إن القلبة دي زي إنك تحط الريموت تحت مخدتك وتقول إنك صايم عن التليفزيون.\n\nقامت. خرجت للمطبخ. أمها كانت بتقطّع بصل وعينيها بتدمع.\n\n«ماما.. خلّي ده عندك لحد العشا.»\n\nأمها بصت لها بنص عين، وأخدت الموبايل وحطته فوق التلاجة جنب علبة السمنة، من غير ولا سؤال. وكملت تقطيع.\n\nرجعت الأوضة. الهدوء كان غريب في الأول، زي ودنك لما المروحة تقف فجأة في عز الصيف. وبعدين حاجة اتفكت في دماغها.\n\nالسطر في الأحياء اتقري مرة واحدة واتفهم. والصفحة اللي بعده. والصفحة اللي بعدها.\n\nساعة وربع، من غير ولا شدّة خيط.\n\nلما خرجت تشرب، لقت الموبايل لسه نايم جنب علبة السمنة، وعليه تلات إشعارات مالهمش أي لازمة. ما حستش إنها فاتها حاجة.\n\nحست إنها راجعة من سفر.\n\nفي هامش صفحة عمر، تحت حكاية الريموت، سطر صغير مكتوب بعدها بأيام:\n\n✎ «الحاجة اللي بتسرقك ما تحاربهاش وهي في حضنك. بعّدها أوضة.»","lastMargin":"الإرادة مش عضلة بتتمرّن قدام المغريات.. الإرادة إنك تختار فين تقعد.","lineForYou":"فيه حاجة الليلة محتاجة تتحط جنب علبة السمنة؟","question":"لو هتدّي حاجة لستّك تقفل عليها في درج المكنة.. هتكون إيه؟","capsule":"عمر ما بقاش أقوى. عمر بس إدّى الريموت لستّه، وستّه قفلت عليه في درج مكنة الخياطة. وسلمى سابت موبايلها جنب علبة السمنة.. ورجعت من «سفر» ساعة وربع. «الحاجة اللي بتسرقك.. بعّدها أوضة.»","hidden":{"tool":"تصميم البيئة وزيادة الاحتكاك","toolEn":"Environment design / Situational self-control","mechanism":"استراتيجيات تغيير الموقف (إبعاد المغري فعلياً) أنجح من مقاومته بالإرادة. ووجود الموبايل قدامك حتى لو مقلوب وصامت ممكن يستهلك جزء من الانتباه.","device":"الريموت في درج مكنة الخياطة (٢٠٠٨) ← الموبايل جنب علبة السمنة في المطبخ (٢٠٢٦).","compounding":"بيفضّي الانتباه اللي هتحتاجه أدوات الأسابيع الجاية، وبيمهّد لعادة النوم (الموبايل في المطبخ ١١ بالليل).","sources":["Duckworth, Gendler & Gross (2016). Situational strategies for self-control. Perspectives on Psychological Science, 11(1), 35–55.","Ward, Duke, Gneezy & Bos (2017). Brain Drain: The mere presence of one's own smartphone reduces available cognitive capacity. Journal of the Association for Consumer Research, 2(2), 140–154."],"caution":"⚠ محتاج تحقق: دراسة «Brain Drain» بعض محاولات تكرارها ما لقتش نفس حجم الأثر؛ عشان كده القصة ما بتقولش رقم ولا بتدّعي نتيجة علمية — بتعرض تجربة سلمى بس."}},{"id":"h6","n":6,"week":2,"ordinal":"الهامش السادس","dayName":"الخميس","dateLabel":"١٢ نوفمبر ٢٠٢٦","time":"٨:٠٠ مساءً","title":"اللي ساكن جوه الفيزيا","epigraph":"شفت القمر نطّيت لفوق في الهوا … طُلتُه ما طُلتوش، إيه أنا يهمني؟","epigraphSource":"صلاح جاهين — الرباعيات","body":"الفيزيا.\n\nسلمى ما بتكرهش الفيزيا. هي بس حاسة إن الفيزيا هي اللي بتكرهها. كل مسألة شكلها باب مقفول ومفتاحه في جيب حد تاني.\n\nعشان كده كانت بتأجلها لآخر اليوم، لما طاقتها تكون خلصت، فتبقى المسألة أصعب، فتكرهها أكتر، فتأجلها أكتر. دايرة كاملة مقفولة، زي البطة الخشب اللي بتلف في الملاهي ومش بتوصل لحتة.\n\nالخميس فتحت «الأيام» وعندها نية تشتكي لعمر. لكن عمر كان فرحان المرة دي.\n\n✎ «١٢ نوفمبر ٢٠٠٨ — لقيت الحل! وهو حل عبيط جداً لدرجة إني مكسوف أكتبه.»\n\n✎ «أنا بحب شريط منير (شبابيك) اللي كان بتاع خالي أكتر من أي حاجة. بسمعه وأنا ماشي، وأنا نايم، وأنا باكل. فعملت قانون: الشريط ده ممنوع يشتغل غير وأنا بحل مسايل الكهربا. بس. لا في الشارع، ولا قبل النوم. الكهربا وبس.\nوكمان كوباية الشاي بالنعناع اللي ماما بتعملها العصر؟ ما بقيتش بشربها غير على المسايل.\nالنتيجة؟ بقيت أستنى الكهربا. مش بحبها.. بس بحب الحاجات اللي ساكنة جواها.»\n\nوتحت الكلام، بخط مختلف شوية، كإنه رجع كتبه بعد كام يوم:\n\n✎ «صلاح جاهين بيقول: شفت القمر نطيت لفوق في الهوا، طلته ما طلتوش، إيه أنا يهمني. وأنا بقول: يمكن مش هطول الدرجة النهائية في الكهربا. بس بقيت بستمتع بالنطة نفسها.»\n\nسلمى قفلت الكتاب، وفكرت: إيه الحاجة اللي بحبها لدرجة إني ممكن أحطها رهينة؟\n\nلقيتها بسرعة: الكوباية البيضا اللي عليها رسمة قطة، اللي جابتها لها أختها من إسكندرية. والبلاي ليست بتاعة الموسيقى من غير كلام اللي بتسمعها في الأوتوبيس. والكرواسون بالشوكولاتة من المخبز اللي تحت البيت، اللي بتشتريه مرة في الأسبوع وبتاكله ببطء كإنه هيخلص من الدنيا.\n\nكتبت قانونها الخاص على ورقة:\n\n✍ «الكوباية أم قطة = فيزيا بس.\nالبلاي ليست = مسايل بس (مش حفظ).\nالكرواسون = الخميس، بعد آخر مسألة في الأسبوع.»\n\nأول يوم حست إنها بتضحك على نفسها، وإن ده لعب عيال.\n\nتاني يوم، لقت نفسها بتعمل الشاي بالنعناع وهي بتطلّع كتاب الفيزيا، من غير ما تاخد بالها إن الحركتين بقوا حركة واحدة.\n\nتالت يوم، الأوضة بقت ريحتها نعناع، والمسايل بقى ليها صوت موسيقى هادية، والقطة اللي على الكوباية بقت بتبص لها كإنها بتقولها: يلا.\n\nالفيزيا لسه صعبة. ما حصلش معجزة. بس الطريق ليها بقى فيه ورد.\n\nوالخميس بالليل، وهي بتاكل الكرواسون بعد آخر مسألة، حست إن طعمه أحلى من كل خميس فات. مش عشان الكرواسون اتغير.. عشان بقى ليه سبب.\n\nوفي آخر الصفحة، عمر كاتب:\n\n✎ «ما تستناش لما تحب الحاجة الصعبة. خلّي الحاجة الحلوة تسكن جواها.. وهتلاقي رجلك بتروحلها لوحدها.»","lastMargin":"مش لازم تحب الطريق.. كفاية تحط فيه حاجة بتحبها.","lineForYou":"إيه الحاجة الحلوة اللي ممكن تسكّنها جوه أتقل مادة عليك؟","question":"إيه الحاجة اللي بتحبها لدرجة إنك ممكن تحطها رهينة؟","capsule":"شريط منير ممنوع يشتغل غير على مسايل الكهربا. والكوباية أم قطة = فيزيا بس. «ما تستناش لما تحب الحاجة الصعبة.. خلّي الحاجة الحلوة تسكن جواها.»","hidden":{"tool":"حزم المغريات (ربط المتعة بالمهمة التقيلة)","toolEn":"Temptation bundling","mechanism":"حصر متعة معينة في وقت المهمة اللي بنتجنبها بيخلي البدء فيها مرغوب، وبيكسر حلقة «أأجل ← أتعب ← أكره ← أأجل».","device":"شريط منير + شاي النعناع (عمر) ← الكوباية أم قطة + البلاي ليست + كرواسون الخميس (سلمى).","compounding":"بيحوّل أصعب مادة من «عقاب» لـ«مكان»، وبيقلل الحاجة لقوة الإرادة اللي بنوفرها لباقي الشهر.","sources":["Milkman, Minson & Volpp (2014). Holding the Hunger Games hostage at the gym: An evaluation of temptation bundling. Management Science, 60(2), 283–299.","Perham & Currie (2014). Does listening to preferred music improve reading comprehension performance? Applied Cognitive Psychology, 28(2), 279–284 — الموسيقى اللي فيها كلام بتأثر على الفهم القرائي، عشان كده سلمى حصرت البلاي ليست في الموسيقى بدون كلام وللمسايل بس."],"caution":"⚠ محتاج تحقق: صياغة رباعية صلاح جاهين بالحرف قبل النشر. وأثر temptation bundling في دراسات أكبر لاحقة كان أصغر من الدراسة الأصلية."}},{"id":"h7","n":7,"week":3,"ordinal":"الهامش السابع","dayName":"الأحد","dateLabel":"١٥ نوفمبر ٢٠٢٦","time":"٨:٠٠ مساءً","title":"سطر امبارح","epigraph":"ما يحسّش بالنار.. إلا اللي ماسكها","epigraphSource":"مثل مصري","body":"الجمعة، عزومة الغدا عند خالتها.\n\nالملوخية كانت حلوة، والفراخ كانت محمّرة، وخالتها كانت بتتكلم عن مازن.\n\n«مازن قفل الامتحان الشهري. تلاتين من تلاتين في الكيميا. والمدرس قاله إنت هتطلع الأول على المدرسة.»\n\nوبعدين، بنفس النفَس، وهي بتحط شوية رز زيادة في طبق سلمى: «وانتي يا سلمى، عملتي إيه؟»\n\nالمعلقة وقفت في نص السكة. كل العيون في الأوضة اتلمّت على وشها زي ضوء كشاف.\n\n«كويس الحمد لله.»\n\nالكلمتين خرجوا وهي حاسة إن الملوخية بقى طعمها حديد.\n\nبالليل رجعت البيت، ورمت نفسها على السرير، وفتحت إنستجرام. مازن كان منزّل ستوري: صورة ورقة الامتحان وعليها ٣٠ بالأحمر، ومكتوب تحتها «الحمد لله».\n\nقفلت الموبايل. فتحت «الأيام». كإن عمر كان مستنيها عند الصفحة دي بالذات.\n\n✎ «١٥ نوفمبر ٢٠٠٨ — حسام ابن عمي جاب الدرجة النهائية في التلات امتحانات. عمي عمل عشا. أنا ما روحتش، قلت تعبان.»\n\n✎ «بس النهارده حصلت حاجة. كنت عندهم بالصدفة، ودخلت الحمام، وسمعت حسام بيعيط في أوضته. مش عياط عادي.. عياط حد مخنوق. عمي جايبله مدرس في البيت في كل مادة، وبيصحّيه الساعة خمسة، وبيقوله كل يوم إن العيلة كلها مستنياه.\nطلعت من عندهم وأنا فاهم حاجة: أنا كنت بقارن الكواليس بتاعتي بالإعلان بتاعه. شايف نفسي من جوه، بكل كسلي ووقعاتي.. وشايفه هو من بره، بالمانشيت.\nما ينفعش أكسب سباق، أنا وهو مش في نفس الطريق أصلاً.»\n\n✎ «فقررت أقارن نفسي بحد واحد بس: عمر بتاع امبارح. كل ليلة سطر واحد.»\n\nوتحت الكلام، سطور صغيرة كتير، كل سطر بتاريخ:\n\n✎ «امبارح: ٤٠ دقيقة. النهارده: ساعة.\nامبارح: ٣ مسايل. النهارده: ٥ (واحدة غلط).\nامبارح: ولا حاجة. النهارده: صفحة. (أحسن من امبارح برضه).»\n\nسلمى ضحكت على السطر الأخير. «أحسن من امبارح برضه». فيه حاجة في الجملة دي فيها كرامة غريبة.\n\nبصّت لستوري مازن تاني في دماغها، وافتكرت إنها ما تعرفش هو نام كام ساعة امبارح، ولا عيط ولا لأ، ولا خالتها بتقوله إيه لما الباب يتقفل.\n\nوإنها هي كمان، لو حد شاف ستوري ليها في يوم.. مش هيشوف الحفرة اللي طلعت منها.\n\nفتحت صفحة جديدة في آخر الكشكول، وكتبت فوق: «سلمى بتاعة امبارح».\n\nوتحتها أول سطر:\n\n✍ «امبارح: كنت بقارن نفسي بمازن.\nالنهارده: بقارن نفسي بيا.»\n\nما فتحتش ستوري مازن تاني الليلة دي. مش زعل منه. بالعكس.. دعتله من قلبها إنه ينام كويس.\n\nفي هامش صفحة عمر، جملة بخط تقيل:\n\n✎ «انت ماسك نارك انت.. خليك فيها، وسيب كل واحد لناره.»","lastMargin":"السباق الوحيد اللي ينفع تكسبه.. هو اللي انت فيه لوحدك.","lineForYou":"سطر واحد قبل النوم: امبارح.. والنهارده.","question":"امبارح كام.. والنهارده كام؟ (حتى لو صفحة واحدة)","capsule":"عمر سمع ابن عمه بتاع الدرجة النهائية بيعيط ورا الباب.. وفهم إنه كان بيقارن كواليسه بإعلان غيره. من يومها بيقارن نفسه بحد واحد بس: عمر بتاع امبارح.","hidden":{"tool":"المقارنة الزمنية بدل المقارنة الاجتماعية","toolEn":"Temporal vs. social comparison","mechanism":"المقارنة الصاعدة بالآخرين (خصوصاً على السوشيال ميديا) مرتبطة بانخفاض تقدير الذات. المقارنة بالنفس عبر الزمن بتدي إحساس تقدم حقيقي وقابل للتحكم.","device":"دموع حسام ورا الباب + «سطر امبارح» في آخر الكشكول.","compounding":"بيبني سجل تقدم يومي، وده بيمهد مباشرة لأداة الهامش الجاي (التقدم المرئي للأهل).","sources":["Albert (1977). Temporal comparison theory. Psychological Review, 84(6), 485–503.","Wilson & Ross (2000). The frequency of temporal-self and social comparisons in people's personal appraisals. Journal of Personality and Social Psychology, 78(5), 928–942.","Vogel, Rose, Roberts & Eckles (2014). Social comparison, social media, and self-esteem. Psychology of Popular Media Culture, 3(4), 206–222."],"caution":""}},{"id":"h8","n":8,"week":3,"ordinal":"الهامش الثامن","dayName":"الثلاثاء","dateLabel":"١٧ نوفمبر ٢٠٢٦","time":"٨:٠٠ مساءً","title":"عرف يعدّ","epigraph":"اللي ما يشوفش من الغربال.. يبقى أعمى","epigraphSource":"مثل مصري","body":"العشا في بيت سلمى بقاله أسبوعين ليه صوت واحد: صوت المعالق.\n\nأبوها راجل قليل الكلام. بيرجع من الشغل الساعة سبعة، يغسل إيده، يقعد، ويسأل نفس السؤال كل ليلة بنفس النغمة: «ذاكرتي؟»\n\nوهي ترد بنفس الكلمة كل ليلة: «آه».\n\nوهو يبص لها بصة صغيرة، مافيهاش تصديق ولا تكذيب.. فيها قلق. وهي تحس إن البصة دي بتقول «أنا مش مصدقك»، فتتضايق، فتخلص أكلها بسرعة وتقوم. وهو يحس إنها بتهرب، فيقلق أكتر.\n\nحرب صامتة على ترابيزة سفرة، مافيهاش ولا كلمة.\n\nالليلة دي، وهي بتقلّب «الأيام» قبل النوم، لقت ضهر الجلدة من جوه مليان مربعات صغيرة متخططة بالقلم الرصاص. شبكة كاملة، وكل مربع جواه علامة صح صغيرة. وجنب الشبكة:\n\n✎ «١٧ نوفمبر ٢٠٠٨ — أبويا ما بيعرفش يقول برافو. ولا عمره قالها. هو بتاع شغل، يرجع تعبان ويسأل: ذاكرت؟ وأنا أقول آه. وهو مش مصدق. وأنا متضايق إنه مش مصدق.»\n\n✎ «فعملت الشبكة دي. كل مربع = درس خلصته بجد، حليت مسايله ورجعتله. ما بقولش لحد. بس بسيب الكتاب مفتوح على الجلدة فوق المكتب.»\n\n✎ «امبارح بالليل صحيت أشرب، ولقيت أبويا واقف في أوضتي في الضلمة، ماسك الكتاب، وبيعد المربعات بصباعه. واحد.. اتنين.. تلاتة.. ما شافنيش. وأنا رجعت السرير بسرعة وعملت نفسي نايم.\nالصبح، لقيت على المكتب قلم أبو أربع ألوان. ما قالش حاجة. ولا أنا.\nوبطّل يسأل ذاكرت.»\n\nسلمى قعدت تبص للمربعات كتير. فيه حاجة في الصورة دي، أب واقف في الضلمة بيعد بصباعه، وجعتها بطريقة حلوة.\n\nافتكرت أبوها وهو بيبص لها على العشا. وفهمت إن البصة دي ما كانتش «أنا مش مصدقك». كانت «أنا مش شايف».\n\nوالأب اللي مش شايف.. مش محتاج كلام يقنعه. محتاج حاجة يشوفها.\n\nقامت وجابت الكرتونة البيضا بتاعة علبة الجزمة الجديدة، ورسمت عليها شبكة كبيرة. كل عمود مادة، وكل مربع درس. وبالقلم الأخضر لوّنت المربعات اللي خلصتها بجد فعلاً. كانوا تسعة. تسعة بس.\n\nوعلّقت الكرتونة على باب أوضتها.. من بره، مش من جوه.\n\nتاني يوم على العشا، أبوها ما سألش. ولا كلمة. بس وهو داخل ينام، وقف قدام باب أوضتها. وسمعته، من ورا الباب، بيقول لأمها بصوت واطي فيه حاجة شبه الابتسامة: «البت لوّنت تسعة.»\n\nبعد يومين بقوا أربعتاشر. وبعد أسبوع، لقت على مكتبها علبة أقلام فلوماستر جديدة.. أخضر بس. اتنين وعشرين قلم أخضر.\n\nما قالش برافو. بس عرف يعدّ.\n\nوفي آخر هامش، عمر كاتب، بخط فيه رعشة خفيفة:\n\n✎ «ساعات أهالينا مش عُمي.. احنا اللي قافلين الغربال.»","lastMargin":"التعب اللي محدش شايفه.. البيت بيترجمه قلق. خلّيه يتشاف.","lineForYou":"كرتونة، ومربعات، وقلم أخضر.. وباب من بره.","question":"أهلك بيسألوك إيه كل يوم؟ وإيه اللي ممكن يخليهم يبطّلوا يسألوا؟","capsule":"أبو عمر ما بيعرفش يقول برافو. بس في ليلة، وقف في الضلمة يعد المربعات بصباعه. وأبو سلمى قال لأمها من ورا الباب: «البت لوّنت تسعة.» ما قالش برافو.. بس عرف يعدّ.","hidden":{"tool":"متابعة التقدم وجعله مرئي","toolEn":"Visible progress monitoring (Progress Principle)","mechanism":"تسجيل التقدم بشكل ملموس وعلني بيزود فرص تحقيق الهدف، وبيدي إحساس إنجاز بيغذي الدافعية. ولما الأهل يشوفوا دليل مادي، القلق اللي كان بيتحول لأسئلة واتهامات بيقل من غير مواجهة.","device":"شبكة المربعات على ضهر الجلدة (عمر) ← الكرتونة الخضرا على باب الأوضة من بره (سلمى).","compounding":"بيحل صراع البيت (أكبر مصدر ضغط في المشاكل اللي وصلتنا) وبيدّي الطالب لوحة تقدم هيعتمد عليها لحد آخر السنة.","sources":["Harkin et al. (2016). Does monitoring goal progress promote goal attainment? A meta-analysis of the experimental evidence. Psychological Bulletin, 142(2), 198–229 — الأثر أقوى لما التقدم يتسجل فعلياً أو يتعرض علناً.","Amabile & Kramer (2011). The Progress Principle. Harvard Business Review Press."],"caution":""}},{"id":"h9","n":9,"week":3,"ordinal":"الهامش التاسع","dayName":"الخميس","dateLabel":"١٩ نوفمبر ٢٠٢٦","time":"٨:٠٠ مساءً","title":"العجين المخمّر","epigraph":"بقدرِ الكدِّ تُكتسَبُ المعالي … ومن طلبَ العُلا سهِرَ الليالي","epigraphSource":"يُنسب للإمام الشافعي","body":"الساعة كانت تلاتة وعشرة الفجر، وسلمى كانت فخورة.\n\nخلصت درسين أحياء، وكتبت ملخص بالألوان، وحاسة إنها بطلة من أبطال الحواديت؛ البطل اللي بيسهر والدنيا كلها نايمة. «ومن طلب العلا سهر الليالي» كانت مكتوبة على ورقة ملزوقة فوق مكتبها من أول السنة.\n\nنامت أربع ساعات.\n\nالصبح، في الحصة الأولى، المدرسة سألتها سؤال من الدرس اللي ذاكرته امبارح بالظبط. وقفت. فتحت بقها. وما طلعش حاجة. المعلومة كانت هناك.. شايفاها.. بس كإنها ورا إزاز مضبّب.\n\nبالليل فتحت «الأيام» بإحساس حد اتخان.\n\n✎ «١٩ نوفمبر ٢٠٠٨ — النهارده حصلتلي حاجة غريبة. سهرت لحد الفجر عشان امتحان الشهر، وقعدت قدام الورقة وكل اللي ذاكرته واقف ورا إزاز. شايفه ومش قادر أمسكه.»\n\n✎ «خالي دكتور في المنصورة. حكيتله. ضحك وقالي: يا عمر، الذاكرة زي العجين. انت بتعجنه بالنهار وانت بتذاكر، بس الخبيز ما بيكملش غير بالليل وانت نايم. لو ما نمتش، بتدخل الامتحان بعجين نيّ.\nقلتله: بس الشافعي قال ومن طلب العلا سهر الليالي.\nقالي: والشافعي برضه كان بينام. السهر على الحاجة غير السهر ضدها.»\n\n✎ «فضلت أفكر في الجملة دي طول اليوم. السهر على الحاجة.. غير السهر ضدها.\nيمكن البيت ده معناه إنك تدّي لياليك للحاجة اللي بتحلم بيها، وإن الليل ما يتسرقش منك في حاجات تافهة. مش إنك تقلع جسمك وترميه على الأرض.\nمن النهارده: بنام الساعة ١١ ونص. والمذاكرة اللي بعد كده وأنا عيني بتقفل.. ما كانتش بتعلّم أصلاً.»\n\nسلمى بصّت للورقة الملزوقة فوق المكتب. «ومن طلب العلا سهر الليالي».\n\nما قطعتهاش. البيت حلو، وصاحبه يستاهل. بس كتبت تحته بالرصاص، بخط صغير:\n\n✍ «السهر على الحاجة.. مش ضدها.»\n\nالأسبوع ده جربت. الموبايل في المطبخ الساعة ١١ (زي ما اتفقت مع نفسها من أسبوع على الورقة الصفرا)، والنور يتقفل ١١ ونص.\n\nأول ليلتين ما جالهاش نوم. فضلت تبص للسقف وتحس إنها بتضيّع وقت، وإن مازن أكيد صاحي دلوقتي بيذاكر.\n\nالليلة التالتة نامت.\n\nوفي الصباح الرابع، وهي بتسرّح شعرها قدام المراية، لقت نفسها بتسمّع لنفسها درس الدورة الدموية من غير ما تقصد. كله. بالترتيب. كإن حد رتّبه لها وهي نايمة.\n\nوفي الحقيقة.. حد فعلاً رتّبه.\n\nفي آخر صفحة عمر، بخط هادي جداً:\n\n✎ «العجين المخمّر بيعلى لوحده. سيبه يرتاح.»","lastMargin":"مش كل ساعة صاحي فيها بتتحسب.. وفيه ساعات نايم فيها بتتحسب دبل.","lineForYou":"الليلة، الموبايل ينام بدري.. وانت وراه.","question":"بتنام الساعة كام بجد؟ (من غير كسوف)","capsule":"«الذاكرة زي العجين.. بتتعجن بالنهار وتتخبز وانت نايم.» السهر على الحاجة.. غير السهر ضدها. وسلمى صحيت اليوم الرابع لقت الدرس متسمّع في دماغها بالترتيب.","hidden":{"tool":"النوم كجزء من المذاكرة","toolEn":"Sleep-dependent memory consolidation","mechanism":"النوم (خصوصاً النوم العميق ومراحل REM) بيلعب دور أساسي في تثبيت الذاكرة ونقلها للمدى الطويل. وقلة النوم المزمنة عند الطلاب مرتبطة بأداء دراسي أضعف. المراهقين محتاجين ٨–١٠ ساعات.","device":"تشبيه «العجين اللي بيتخبز وانت نايم» من خال عمر الدكتور + إعادة قراءة بيت الشافعي: «السهر على الحاجة مش ضدها».","compounding":"بيكمّل أداة «الموبايل في المطبخ»، وبيضاعف أثر الاسترجاع والتباعد اللي جايين في الباب الرابع.","sources":["Diekelmann & Born (2010). The memory function of sleep. Nature Reviews Neuroscience, 11(2), 114–126.","Paruthi et al. (2016). Recommended amount of sleep for pediatric populations: AASM consensus statement. Journal of Clinical Sleep Medicine, 12(6), 785–786 — ١٣–١٨ سنة: ٨–١٠ ساعات.","Hershner & Chervin (2014). Causes and consequences of sleepiness among college students. Nature and Science of Sleep, 6, 73–84."],"caution":"قراءة بيت الشافعي في القصة معروضة كرأي شخصي لعمر وخاله، مش كشرح معتمد للبيت."}},{"id":"h10","n":10,"week":4,"ordinal":"الهامش العاشر","dayName":"الأحد","dateLabel":"٢٢ نوفمبر ٢٠٢٦","time":"٨:٠٠ مساءً","title":"والنار منين يا تيتة؟","epigraph":"العلم في الراس.. مش في الكرّاس","epigraphSource":"مثل مصري","body":"«العلم في الراس مش في الكرّاس.»\n\nتيتة عزيزة بتقول المثل ده من ساعة ما سلمى فاكرة نفسها. بتقوله لما حد يدور على ورقة، أو لما حد يقرا من الموبايل وصفة أكل هي حافظاها من خمسين سنة.\n\nتيتة ما بتعرفش تقرا. بس بتعرف كل حاجة.\n\nالأحد، سلمى كانت قاعدة بتقرا ملخص الأحياء للمرة الرابعة. بعينيها. سطر سطر، وبتعلّم بالهايلايتر الأصفر لحد ما الصفحة بقت صفرا كلها، وحاسة إنها حافظة.\n\nوبعدين قفلت الكشكول، وحاولت تقول لنفسها أول خطوة في التنفس الخلوي.\n\nوما عرفتش.\n\nفتحت «الأيام».\n\n✎ «٢٢ نوفمبر ٢٠٠٨ — أبويا بيربّي حمام على السطح. من أسبوعين بطلع أذاكر فوق، والحمام بيبصلي باستغراب.\nبقيت أقفل الكتاب وأشرح للحمام. بصوت عالي. أقف قدام العشة وأقول: بص يا عم، التيار الكهربي ده زي المية في المواسير.. والحمام يهز راسه ويكمل أكل.»\n\n✎ «الحمام ما بيفهمش حاجة. بس أنا بفهم. كل ما أقف في حتة وما أعرفش أكمل، أعرف إن هي دي الحتة اللي ما كنتش فاهمها.\nالكتاب المفتوح كان بيضحك عليا ويقولي انت عارف. الكتاب المقفول ما بيكدبش.»\n\n✎ «وحاجة كمان: جدي الصياد كان عنده جنينة صغيرة جنب البيت. عمره ما سقاها جردل مرة واحدة. كان بيسقيها كوباية كل كام يوم. قالي: الجردل بيغرّق والأرض ما بتشربش. الكوباية بتتشرب.\nفبقيت أرجع للدرس بعد يوم.. وبعد تلات أيام.. وبعد أسبوع. كوباية، مش جردل.»\n\nسلمى قفلت الكتاب، وقفلت الكشكول، وطلعت للصالة.\n\nتيتة عزيزة كانت قاعدة على الكنبة بتنقّي رز في صينية.\n\n«تيتة، ممكن أشرحلك حاجة؟»\n\n«اشرحي يا حبيبتي.. هو أنا هفهم؟»\n\n«مش مهم تفهمي. المهم أنا أفهم.»\n\nوبدأت تشرح. الخلية، والجلوكوز، والطاقة. ووقفت في التالتة. ورجعت. وتيتة كانت بتسأل أسئلة غريبة، وهي لسه بتنقّي الرز:\n\n«يعني الخلية دي زي البيت؟ والجلوكوز ده زي العيش اللي بناكله؟ طب والنار اللي بتطبخه.. منين؟»\n\nوالسؤال ده بالذات، «والنار منين؟»، كان هو السؤال اللي سلمى ما كانتش عارفة إجابته. الأكسجين. النار اللي بتحرق العيش جوه الخلية هي الأكسجين. وفجأة الدرس كله اتقفل في دماغها، زي سوستة شنطة كانت معصلجة واتزحلقت مرة واحدة.\n\nرجعت أوضتها، ونزّلت النتيجة من على الحيطة، وحطت نقطة حمرا على بكره، ونقطة على يوم الأربع، ونقطة على الأحد الجاي. وكتبت جنبهم: «التنفس — كوباية».\n\nوبقت كل يوم، قبل ما تذاكر أي حاجة جديدة، تبص في النتيجة: مين عليه دور يتسقي النهارده؟\n\nوتيتة بقت تستناها بعد العشا، وهي حاطة رجل على رجل: «هتشرحيلي إيه النهارده يا دكتورة؟»\n\nفي هامش صفحة عمر، بخط صغير ومايل:\n\n✎ «اقفل الكتاب واتكلم. لو سكتّ.. يبقى ده اللي محتاج تذاكره.»","lastMargin":"اللي بتشوفه بعينك بيقولك «انت عارف».. واللي بتقوله بلسانك بيقولك الحقيقة.","lineForYou":"اقفل الكتاب، ودوّر على حد يسمعك.. حتى لو حمامة.","question":"مين «تيتة عزيزة» بتاعتك؟ مين أكتر حد بتحب تشرحله؟","capsule":"عمر كان بيشرح للحمام على السطح. وسلمى شرحت لتيتة عزيزة اللي ما بتعرفش تقرا.. وتيتة سألت السؤال اللي قفل الدرس كله: «والنار منين؟» العلم في الراس.. مش في الكرّاس.","hidden":{"tool":"الاسترجاع النشط + التكرار المتباعد + الشرح الذاتي","toolEn":"Retrieval practice + Spaced practice + Self-explanation","mechanism":"محاولة استرجاع المعلومة من غير ما تبص (والشرح لحد تاني) بتثبتها أقوى بكتير من إعادة القراءة والتظليل. وتوزيع المراجعة على فترات متباعدة بيقلل النسيان مقارنة بالمذاكرة المكثفة مرة واحدة.","device":"الشرح للحمام (عمر) ← الشرح لتيتة عزيزة وسؤال «والنار منين؟» (سلمى) + «كوباية مش جردل» والنقط الحمرا على النتيجة.","compounding":"ده قلب «طريقة المذاكرة» نفسها؛ بيحوّل الساعات اللي اتوفرت بالأدوات السابقة لساعات بتعلّم فعلاً.","sources":["Roediger & Karpicke (2006). Test-enhanced learning. Psychological Science, 17(3), 249–255.","Cepeda et al. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin, 132(3), 354–380.","Dunlosky et al. (2013). Improving students' learning with effective learning techniques. Psychological Science in the Public Interest, 14(1), 4–58 — الاسترجاع والتباعد «عالي الفائدة»، والتظليل وإعادة القراءة «منخفض الفائدة»."],"caution":"المعلومة البيولوجية: الأكسجين ضروري للتنفس الخلوي الهوائي ✓ (التشبيه بالنار تبسيط مقصود)."}},{"id":"h11","n":11,"week":4,"ordinal":"الهامش الحادي عشر","dayName":"الثلاثاء","dateLabel":"٢٤ نوفمبر ٢٠٢٦","time":"٨:٠٠ مساءً","title":"سخّن","epigraph":"المية.. تكدّب الغطّاس","epigraphSource":"مثل مصري","body":"بكره امتحان نص الترم التجريبي.\n\nالساعة تسعة بالليل، وإيدين سلمى ساقعة، وقلبها بيدق بطريقة بتحسها في ودانها. كل شوية تقول لنفسها: اهدي.. اهدي.. اهدي. وكل «اهدي» كانت بتزوّد الدقة دقة.\n\nفتحت «الأيام» وهي متأكدة إن عمر هيكون فاهم.\n\n✎ «٢٤ نوفمبر ٢٠٠٨ — بكره امتحان نص السنة. قلبي بيدق كإن فيه حد بيخبط على باب جوايا.\nطول عمري لما أتوتر أقول لنفسي اهدا. ولا مرة هديت.»\n\n✎ «النهارده كنت بتفرج على ماتش، وضربة جزاء في آخر دقيقة، والكاميرا جابت حارس المرمى. كان بيتنطط في مكانه ويخبط على صدره. مش هادي خالص. وصدّ الضربة.\nفهمت إن الحارس ما كانش بيحاول يهدى. كان بيقول لقلبه: يلا، اشتغل. ودقة القلب دي مش خوف.. دي جسمك بيجهّز البنزين.\nفقلت لقلبي النهارده: انت مش خايف.. انت بتسخّن.»\n\n✎ «وعملت حاجة تانية: جبت ورقة وكتبت فيها كل حاجة خايف منها. عشر دقايق. إني أنسى. إن السؤال الأول ييجي صعب. إن أبويا يزعل. إن حسام يطلع الأول تاني. كتبت لحد ما إيدي وجعتني. وقلبت الورقة على وشها.»\n\n✎ «وبعدين تخيلت بكره. مش تخيل حلو، لأ. تخيلت اللحظة اللي هلاقي فيها مسألة مش عارفها. وقررت من دلوقتي هعمل إيه: هعلّم جنبها نجمة، وأعدّي، وأرجعلها في الآخر. خلاص. القرار اتاخد. مش هقف أفكر بكره.\nوالمية تكدّب الغطاس.»\n\nسلمى قرت السطور، وحست إنها مش لوحدها في الأوضة.\n\nجابت ورقة. وكتبت عشر دقايق كاملة:\n\n✍ «خايفة أنسى. خايفة السؤال الأول يبقى من الفصل اللي مش فاهماه. خايفة أشوف وش خالتي وهي بتسأل. خايفة أرجع البنت بتاعة الـ ١١ تاني.»\n\nكتبت لحد ما الكلام بقى يكرر نفسه.. وقلبت الورقة على وشها.\n\nوتخيلت بكره. المسألة الصعبة. نجمة.. وتعدّي. نجمة.. وتعدّي. قالتها في سرها كذا مرة لحد ما بقت زي خطوة رقص محفوظة.\n\nوقلبها لسه بيدق. بس بقت تسمع الدقة دي بودن تانية؛ مش جرس إنذار.. ده صوت موتور بيسخّن قبل السفر.\n\nنامت ١١ ونص. والكرتونة الخضرا اللي على الباب كانت آخر حاجة شافتها قبل ما تغمّض.\n\nالصبح، في اللجنة، أول سؤال كان من الفصل اللي كانت خايفة منه بالظبط.\n\nقلبها دق.\n\nابتسمت ابتسامة صغيرة محدش شافها، وقالت لنفسها في سرها: «أيوه.. سخّن.»\n\nوعلّمت نجمة، وعدّت.\n\nولما رجعتله في آخر الامتحان، كان شكله أصغر بكتير من الأول. الأسئلة كمان بتتعب لما تستناك.\n\nفي هامش صفحة عمر، آخر سطر في الليلة دي:\n\n✎ «الخوف مش ضدك. هو بس ما بيعرفش يتكلم غير بصوت عالي.»","lastMargin":"ما تطفيش الموتور قبل السباق.. خليه يسخّن.","lineForYou":"قبل أي امتحان جاي: عشر دقايق خوف على ورقة، ونجمة جاهزة للسؤال الصعب.","question":"إيه أكتر حاجة بتخاف منها قبل الامتحان؟ اكتبها هنا.. وسيبها.","capsule":"حارس المرمى قبل ضربة الجزاء ما بيحاولش يهدى.. بيقول لقلبه: اشتغل. وسلمى دخلت اللجنة بورقة خوف مقلوبة على وشها، ونجمة جاهزة للسؤال الصعب. «الخوف مش ضدك.. هو بس ما بيعرفش يتكلم غير بصوت عالي.»","hidden":{"tool":"إعادة تفسير التوتر + الكتابة التعبيرية + خطة للعائق","toolEn":"Arousal reappraisal + Expressive writing + MCII (if–then for obstacles)","mechanism":"تفسير علامات التوتر الجسدية كاستعداد/حماس بدل خطر بيحسن الأداء أكتر من محاولة التهدئة. والكتابة عن المخاوف قبل الامتحان بتفضّي الذاكرة العاملة. وتخيل العائق مع قرار مسبق «لو حصل كذا هعمل كذا» بيمنع التجمد.","device":"حارس المرمى («سخّن») + ورقة العشر دقايق المقلوبة + «نجمة وتعدّي».","compounding":"بتحمي كل التعب اللي اتبنى في الشهر من إنه يضيع جوه اللجنة، وبتبقى بروتوكول ثابت لكل امتحانات السنة.","sources":["Jamieson, Mendes, Blackstock & Schmader (2010). Turning the knots in your stomach into bows: Reappraising arousal improves performance on the GRE. Journal of Experimental Social Psychology, 46(1), 208–212.","Brooks (2014). Get excited: Reappraising pre-performance anxiety as excitement. Journal of Experimental Psychology: General, 143(3), 1144–1158.","Ramirez & Beilock (2011). Writing about testing worries boosts exam performance in the classroom. Science, 331(6014), 211–213.","Duckworth et al. (2011). Self-regulation strategies improve self-discipline in adolescents: Benefits of mental contrasting and implementation intentions. Educational Psychology, 31(1), 17–26."],"caution":""}},{"id":"h12","n":12,"week":4,"ordinal":"الهامش الثاني عشر","dayName":"الخميس","dateLabel":"٢٦ نوفمبر ٢٠٢٦","time":"٨:٠٠ مساءً","title":"هوامشه أطول من متنه","epigraph":"على هذه الأرضِ ما يستحقُّ الحياةْ","epigraphSource":"محمود درويش","body":"النتيجة طلعت يوم الخميس.\n\n٢٢ من ٣٠.\n\nسلمى بصّت للرقم كتير. مش ٣٠. مش رقم مازن. مش رقم يتنزّل ستوري. بس فيه حاجة في الرقم ده كانت مختلفة عن كل الأرقام اللي قبله: كانت عارفة هو جه منين.\n\nكل درجة فيه ليها حكاية. الدرجتين دول من السؤال اللي علّمت جنبه نجمة ورجعتله. الدرجة دي من الدرس اللي شرحته لتيتة. والتلاتة دول من «خريطة الألغام».\n\nوالتمن درجات اللي ضاعوا؟ كانت عارفة مكانهم بالظبط. وعارفة هتعمل فيهم إيه.\n\nبالليل فتحت «الأيام» على آخر صفحات. الهوامش كانت بتقلّ. وآخر واحدة كانت على الصفحة البيضا اللي بعد آخر سطر في الكتاب. مكتوبة بقلم حبر أزرق، مش رصاص.\n\n✎ «يوليو ٢٠٠٩ — النتيجة بكره.\nمش عارف هجيب كام. بجد مش عارف.»\n\n✎ «بس عارف حاجة واحدة: الولد اللي جاب ٩ من ٢٠ في نوفمبر.. ما بقاش موجود. واللي قاعد دلوقتي بيكتب ده حد تاني.\nحد بيعرف يقع ويقوم من غير ما يشتم نفسه. بيعرف يدوّر على الغلط اللي كان متأكد منه. بيعرف يقول «لما» بدل «من بكرة». بيعرف يسيب الباب موارب. بيعرف يدّي الريموت لستّه. بيعرف يحط الحلاوة جوه الحاجة الصعبة. بيعرف يقارن نفسه بنفسه. بيعرف يلوّن مربعات لأبوه. بيعرف ينام. بيعرف يشرح للحمام. بيعرف يقول لقلبه سخّن.»\n\n✎ «لو جبت مجموع حلو، هفرح.\nولو ما جبتش.. أنا مش راجع للولد القديم تاني. ده الوحيد اللي متأكد منه.»\n\n✎ «لو الكتاب ده وصل لإيدك، يبقى أنا رجّعته للسور زي ما وعدت نفسي.\nلما تخلصه.. رجّعه انت كمان.\nفيه حد لسه هيقع.\n— عمر»\n\nومافيش بعدها ولا كلمة.\n\nسلمى قعدت تقلّب الصفحة البيضا يمين وشمال، كإن ممكن يكون فيه سطر استخبى. ما عرفتش عمر جاب كام. ولا دخل إيه. ولا هو فين دلوقتي، ولا بقى إيه.\n\nوفهمت بعد شوية إن ده بالظبط اللي كان لازم تفهمه: إن الحكاية عمرها ما كانت عن الرقم اللي في آخرها.\n\nمسكت قلم رصاص. وتحت آخر سطر لعمر، بخط صغير متردد في الأول، وبعدين ثابت:\n\n✍ «٢٦ نوفمبر ٢٠٢٦ — جبت ٢٢ من ٣٠. مش رقم كبير.\nبس أنا مش البنت بتاعة الـ ١١.\nشكراً يا عمر. هرجّعه.\n— سلمى»\n\nيوم الجمعة ركبت المترو، ونزلت العتبة، ومشيت لسور الأزبكية.\n\nالراجل العجوز أبو نضارة متربطة بفتلة كان قاعد في نفس المكان، كإنه ما قامش من ساعتها. بص للكتاب اللي في إيدها، وابتسم من غير ما يستغرب.\n\n«رجّعتيه؟»\n\n«فيه حد لسه هيقع.»\n\nخده منها، ومسح التراب عن جلدته بكُم الجلابية، وحطه في أول الصف. والجلدة الباهتة باينة من بعيد، بلون الشاي الخفيف.\n\nومن يومها، فيه كتاب على سور الأزبكية بخمسة جنيه..\n\nهوامشه أطول من متنه.","lastMargin":"الحكاية عمرها ما كانت عن الرقم اللي في آخرها.. كانت عن الشخص اللي بقيته وانت رايح له.","lineForYou":"فيه حد بعدك لسه هيقع.. هتكتبله إيه في الهامش؟","question":"لو هتكتب هامش للطالب اللي بعدك.. أول جملة هتكون إيه؟","capsule":"سلمى جابت ٢٢ من ٣٠، وما عرفتش عمر جاب كام. ورجّعت الكتاب للسور: «فيه حد لسه هيقع.» ومن يومها، فيه كتاب على سور الأزبكية بخمسة جنيه.. هوامشه أطول من متنه.","hidden":{"tool":"الهوية الجديدة + تعليم الغير","toolEn":"Identity-based motivation + Possible selves + Protégé effect","mechanism":"لما السلوكيات تتحول من «حاجات بعملها» لـ«أنا حد بيعمل كده»، بتستمر بعد ما الحماس يقل. وتصور «الذات الممكنة» بيوجه السلوك. والكتابة لطالب جاي بتثبت التعلم وبتدي معنى للتعب.","device":"آخر هامش لعمر (قائمة «حد بيعرف…» = تلخيص خفي للأدوات الـ ١١) + هامش سلمى + رجوع الكتاب للسور.","compounding":"ده الصمغ اللي بيلزق كل الأدوات في بعض ويخليها تكمل بعد نوفمبر؛ ومحطة الحصاد هتسمّيها صراحة.","sources":["Oyserman (2015). Pathways to Success Through Identity-Based Motivation. Oxford University Press.","Markus & Nurius (1986). Possible selves. American Psychologist, 41(9), 954–969.","Nestojko, Bui, Kornell & Bjork (2014). Expecting to teach enhances learning and organization of knowledge in free recall of text passages. Memory & Cognition, 42(7), 1038–1048."],"caution":"متعمّد: مش هنكشف نتيجة عمر أبداً — ده قلب الرسالة. لو حد سأل في الكومنتات، الرد: «الحكاية عمرها ما كانت عن الرقم»."}}],"finale":{"id":"harvest","ordinal":"محطة الحصاد","dayName":"الأحد","dateLabel":"٢٩ نوفمبر ٢٠٢٦","time":"٨:٠٠ مساءً","title":"الهوامش اللي كتبتها من غير ما تاخد بالك","epigraph":"ومن لا يحبُّ صعودَ الجبالِ … يعِشْ أبدَ الدهرِ بين الحُفَرْ","epigraphSource":"أبو القاسم الشابي","intro":"شهر كامل وانت بتقرا حكاية بنت اسمها سلمى، وولد اسمه عمر، وكتاب بخمسة جنيه.\n\nمحدش قالك «اعمل كذا». مافيش جدول اتفرض عليك، ولا قايمة نصايح بنقط، ولا حد زعقلك.\n\nبس لو بصيت وراك دلوقتي، هتلاقي إن الحكاية كانت كل مرة بتسيب في جيبك حاجة صغيرة. ولو طلعتهم وحطيتهم جنب بعض على الترابيزة.. هتلاقيهم مش نصايح متفرقة. هتلاقيهم نظام كامل، كل حتة فيه شايلة اللي بعدها.\n\nنظام مش معمول لشهر نوفمبر بس. ده معمول لباقي السنة كلها.\n\nودي هوامشك الاتناشر:","tools":[{"n":1,"ch":1,"name":"«سامحتك»","line":"كلمة تحت كل وقعة. مش عشان اللي حصل كويس.. عشان تقوم من غير حِمل زيادة على ضهرك."},{"n":2,"ch":2,"name":"خريطة الألغام","line":"في كل امتحان، دوّر الأول على الغلط اللي كنت متأكد منه. ده أغلى غلط عندك."},{"n":3,"ch":3,"name":"«لما.. هعمل»","line":"قرارات ليها عنوان (مكان وزمان) بدل «من بكرة». الساعة تلاتة هي اللي بتقوم عم سيد."},{"n":4,"ch":4,"name":"الباب الموارب","line":"ابدأ بمسألة واحدة بس. وقبل ما تقوم، سيب السطر الأخير مفتوح لبكره."},{"n":5,"ch":5,"name":"درج مكنة الخياطة","line":"الحاجة اللي بتسرقك ما تحاربهاش وهي في حضنك. بعّدها أوضة."},{"n":6,"ch":6,"name":"اللي ساكن جوه الفيزيا","line":"حط حاجة بتحبها جوه الحاجة اللي بتتقل عليها، وما تديهاش لنفسك غير هناك."},{"n":7,"ch":7,"name":"سطر امبارح","line":"قارن نفسك بحد واحد بس: انت بتاع امبارح. سطر كل ليلة."},{"n":8,"ch":8,"name":"المربعات الخضرا","line":"خلّي تعبك يتشاف على باب أوضتك.. والبيت هيبطّل يسأل ويبدأ يعدّ."},{"n":9,"ch":9,"name":"العجين المخمّر","line":"نام ٨ ساعات تقريباً. اللي ذاكرته بيكمل يتخبز وانت نايم. السهر على الحاجة مش ضدها."},{"n":10,"ch":10,"name":"تيتة عزيزة + الكوباية","line":"اقفل الكتاب واشرح لحد. وارجع للدرس بعد يوم، وتلات أيام، وأسبوع. كوباية مش جردل."},{"n":11,"ch":11,"name":"«سخّن»","line":"قبل الامتحان: عشر دقايق خوف على ورقة مقلوبة، ودقة قلبك بنزين، ونجمة جاهزة للسؤال الصعب."},{"n":12,"ch":12,"name":"الهامش اللي بعدك","line":"انت مش بتعمل الحاجات دي.. انت بقيت حد بيعمل كده. ودي اللي مش هترجع منها."}],"outro":"مش محتاج تعمل الاتناشر من بكرة. ولا حتى من الأسبوع الجاي.\n\nاختار اتنين بس. أكتر اتنين حسيت إنهم بيتكلموا عنك. وعيش بيهم لحد ما يبقوا زي الأذان اللي بيقوّم عم سيد.. ولما يبقوا عادة، ضيف التالت.\n\nولو حاسس إنك لسه بتاع الـ ١١.. فده عادي جداً. سلمى كمان كانت كده في أول الشهر. والفرق بينك وبينها مش إنها أشطر.. الفرق إنها فتحت الكتاب.\n\nوانت فتحته معاها.\n\nيبقى فاضل حاجة واحدة: اكتب هامشك الأول. هنا، في الكومنتات. سطر واحد للطالب اللي لسه هيقع بعدك.\n\nيمكن يكون هو الهامش اللي هيلاقيه في وقته بالظبط.","question":"اكتب هامشك الأول.. سطر واحد للطالب اللي لسه هيقع بعدك.","capsule":"شهر كامل من غير ولا نصيحة مباشرة.. ولو حطيت الهوامش الاتناشر جنب بعض، هتلاقيهم نظام كامل لباقي السنة. اختار اتنين بس.. واكتب هامشك الأول."}};
+
+    let currentViewMode = 'reader'; // reader | science | broadcast
+    let currentTheme = 'sepia';
+    let audioCtx = null;
+    let noiseNode = null;
+    let isPlayingAudio = false;
+
+    // Local publication state
+    const PUBLISH_STORAGE_KEY = 'hawamesh_publish_status_v1';
+    let publishStatus = {};
+    try {
+      publishStatus = JSON.parse(localStorage.getItem(PUBLISH_STORAGE_KEY) || '{}');
+    } catch { publishStatus = {}; }
+
+    function savePublishStatus() {
+      localStorage.setItem(PUBLISH_STORAGE_KEY, JSON.stringify(publishStatus));
+      updateSidebarProgress();
+    }
+
+    // Initialize UI
+    window.addEventListener('DOMContentLoaded', () => {
+      renderSidebar();
+      renderChapters();
+      renderHarvest();
+      updateSidebarProgress();
+      setupScrollObserver();
+    });
+
+    // RENDER SIDEBAR
+    function renderSidebar() {
+      const nav = document.getElementById('sidebarNav');
+      nav.innerHTML = '';
+
+      APP_DATA.weeks.forEach(w => {
+        const group = document.createElement('div');
+        group.className = 'nav-week-group';
+
+        const title = document.createElement('div');
+        title.className = 'nav-week-title';
+        title.innerHTML = `<span>${w.title}</span> <span>${w.range}</span>`;
+        group.appendChild(title);
+
+        const list = document.createElement('ul');
+        list.className = 'nav-items-list';
+
+        const weekChapters = APP_DATA.chapters.filter(c => c.week === w.n);
+        weekChapters.forEach(c => {
+          const li = document.createElement('li');
+          const isPublished = !!publishStatus[c.id];
+
+          li.innerHTML = `
+            <button class="nav-item-btn" id="nav-btn-${c.n}" onclick="scrollToChapter(${c.n})">
+              <span class="nav-item-title">
+                <span class="nav-num">${c.n}</span>
+                <span>${c.title}</span>
+              </span>
+              <span class="nav-status-dot ${isPublished ? 'published' : ''}" title="${isPublished ? 'تم النشر' : 'غير منشور'}"></span>
+            </button>
+          `;
+          list.appendChild(li);
+        });
+
+        group.appendChild(list);
+        nav.appendChild(group);
+      });
+
+      // Add harvest item
+      const harvestGroup = document.createElement('div');
+      harvestGroup.className = 'nav-week-group';
+      harvestGroup.innerHTML = `
+        <div class="nav-week-title"><span>محطة الحصاد</span> <span>٢٧ نوفمبر</span></div>
+        <ul class="nav-items-list">
+          <li>
+            <button class="nav-item-btn" id="nav-btn-harvest" onclick="scrollToHarvest()">
+              <span class="nav-item-title">
+                <span class="nav-num">★</span>
+                <span>${APP_DATA.finale.title}</span>
+              </span>
+              <span class="nav-status-dot ${publishStatus['harvest'] ? 'published' : ''}"></span>
+            </button>
+          </li>
+        </ul>
+      `;
+      nav.appendChild(harvestGroup);
+    }
+
+    // RENDER CHAPTERS
+    function renderChapters() {
+      const container = document.getElementById('chaptersContainer');
+      container.innerHTML = '';
+
+      APP_DATA.chapters.forEach(c => {
+        const week = APP_DATA.weeks.find(w => w.n === c.week);
+        const card = document.createElement('article');
+        card.className = 'chapter-card';
+        card.id = 'chapter-' + c.n;
+
+        // Paragraphs format
+        const paragraphs = c.body.split('\n\n').filter(p => p.trim()).map(p => `<p>${p.trim()}</p>`).join('');
+
+        card.innerHTML = `
+          <div class="chapter-header">
+            <div class="chapter-meta-line">
+              <span class="chapter-date">
+                📅 ${c.dayName} ${c.dateLabel} • ⏰ ${c.time} ${c.launchNote ? `(${c.launchNote})` : ''}
+              </span>
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <span class="badge badge-primary">فصل ${c.n} من ١٢</span>
+                <span class="badge badge-science">${c.hidden.tool}</span>
+              </div>
+            </div>
+            <h2 class="chapter-main-title">${c.title}</h2>
+            <div class="epigraph-box">
+              <div class="epigraph-text">«${c.epigraph}»</div>
+              <div class="epigraph-source">— ${c.epigraphSource}</div>
+            </div>
+          </div>
+
+          <!-- Story prose -->
+          <div class="story-body">
+            ${paragraphs}
+          </div>
+
+          <!-- Omar Margin -->
+          <div class="margin-note-card">
+            <span class="margin-pin">هامش عمر • ٢٠٠٨</span>
+            <div class="margin-quote">«${c.lastMargin}»</div>
+            <div class="margin-author">
+              <span>✍️ مكتوب بالقلم الرصاص على هامش الصفحة</span>
+            </div>
+          </div>
+
+          <!-- Resonance & Question -->
+          <div class="resonance-grid">
+            <div class="res-box res-line">
+              <div class="res-label">💡 سطر لك:</div>
+              <div class="res-text">${c.lineForYou}</div>
+            </div>
+            <div class="res-box res-question">
+              <div class="res-label">💬 سؤال الهامش في التعليقات:</div>
+              <div class="res-text">${c.question}</div>
+            </div>
+          </div>
+
+          <!-- Science Blueprint (Behavioral Mode) -->
+          <div class="science-blueprint-card" id="science-card-${c.n}">
+            <div class="science-header" onclick="toggleScienceCard(${c.n})">
+              <div class="science-title-wrap">
+                <span style="font-size: 18px;">🔬</span>
+                <span class="science-title">الأداة السلوكية: ${c.hidden.tool} (${c.hidden.toolEn})</span>
+              </div>
+              <span style="font-size: 13px; color: var(--text-faint);">عرض/إخفاء التفاصيل ▾</span>
+            </div>
+            <div class="science-details">
+              <div class="sc-field">
+                <strong>الآلية النفسية والمعرفية العميقة:</strong>
+                <div>${c.hidden.mechanism}</div>
+              </div>
+              <div class="sc-field">
+                <strong>التوظيف الروائي غير المباشر:</strong>
+                <div>${c.hidden.device}</div>
+              </div>
+              <div class="sc-field">
+                <strong>الأثر التراكمي في السلسلة:</strong>
+                <div>${c.hidden.compounding}</div>
+              </div>
+              <div class="sc-field">
+                <strong>الدراسات والمراجع الأكاديمية:</strong>
+                <ul class="sc-sources">
+                  ${c.hidden.sources.map(s => `<li>${s}</li>`).join('')}
+                </ul>
+              </div>
+              ${c.hidden.caution ? `
+                <div class="sc-field" style="border-right: 3px solid #f59e0b;">
+                  <strong>تنبيه طبي ومحتوى:</strong>
+                  <div>${c.hidden.caution}</div>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+
+          <!-- Capsule Broadcast Drawer (Broadcast Mode) -->
+          <div class="capsule-box" id="capsule-box-${c.n}">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-family: var(--font-heading); font-size: 13px; font-weight: 700; color: var(--text-muted);">
+                📱 كبسولة البث السريع (WhatsApp / Telegram):
+              </span>
+              <button class="btn btn-outline btn-sm" onclick="copyText(APP_DATA.chapters[${c.n - 1}].capsule, 'تم نسخ الكبسولة')">
+                نسخ الكبسولة
+              </button>
+            </div>
+            <pre>${c.capsule}</pre>
+          </div>
+
+          <!-- Action bar -->
+          <div class="chapter-actions-bar">
+            <div class="copy-buttons-group">
+              <button class="btn btn-primary btn-sm" onclick="copyChapterFull(${c.n})">
+                📋 نسخ البوست الروائي كاملاً
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="copyText(APP_DATA.chapters[${c.n - 1}].lastMargin, 'تم نسخ هامش عمر')">
+                ✍️ نسخ هامش عمر
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="togglePublished('${c.id}', ${c.n})">
+                <span id="pub-label-${c.n}">${publishStatus[c.id] ? '✓ تم النشر' : '○ تحديد كمنشور'}</span>
+              </button>
+            </div>
+
+            <div style="font-size: 13px; color: var(--text-muted); font-family: var(--font-mono);">
+              #${c.id} • ${c.body.length} حرف
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    // RENDER HARVEST
+    function renderHarvest() {
+      const introDiv = document.getElementById('harvestIntro');
+      introDiv.innerHTML = APP_DATA.finale.intro.split('\n\n').map(p => `<p>${p.trim()}</p>`).join('');
+
+      const grid = document.getElementById('harvestGrid');
+      grid.innerHTML = '';
+      APP_DATA.finale.tools.forEach(t => {
+        const card = document.createElement('div');
+        card.className = 'harvest-tool-card';
+        card.onclick = () => scrollToChapter(t.ch);
+        card.innerHTML = `
+          <div class="harvest-tool-num">الأداة ${t.n} • من فصل ${t.ch}</div>
+          <div class="harvest-tool-name">${t.name}</div>
+          <div class="harvest-tool-line">${t.line}</div>
+        `;
+        grid.appendChild(card);
+      });
+
+      const outroDiv = document.getElementById('harvestOutro');
+      outroDiv.innerHTML = APP_DATA.finale.outro.split('\n\n').map(p => `<p>${p.trim()}</p>`).join('');
+    }
+
+    // VIEW MODE SWITCHER
+    function switchViewMode(mode) {
+      currentViewMode = mode;
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === mode);
+      });
+
+      const scienceCards = document.querySelectorAll('.science-blueprint-card');
+      const capsuleBoxes = document.querySelectorAll('.capsule-box');
+
+      if (mode === 'reader') {
+        scienceCards.forEach(c => c.style.display = 'none');
+        capsuleBoxes.forEach(c => c.style.display = 'none');
+      } else if (mode === 'science') {
+        scienceCards.forEach(c => c.style.display = 'block');
+        capsuleBoxes.forEach(c => c.style.display = 'none');
+      } else if (mode === 'broadcast') {
+        scienceCards.forEach(c => c.style.display = 'none');
+        capsuleBoxes.forEach(c => c.style.display = 'block');
+      }
+      showToast(`تم التبديل إلى: ${mode === 'reader' ? 'وضع الرواية' : mode === 'science' ? 'كواليس العلوم' : 'أدوات النشر'}`);
+    }
+
+    function toggleScienceCard(n) {
+      const card = document.getElementById('science-card-' + n);
+      const details = card.querySelector('.science-details');
+      details.style.display = details.style.display === 'none' ? 'grid' : 'none';
+    }
+
+    // PUBLISH TOGGLE
+    function togglePublished(id, n) {
+      publishStatus[id] = !publishStatus[id];
+      savePublishStatus();
+      const label = document.getElementById('pub-label-' + n);
+      if (label) {
+        label.innerText = publishStatus[id] ? '✓ تم النشر' : '○ تحديد كمنشور';
+      }
+      renderSidebar();
+      showToast(publishStatus[id] ? 'تم التحديد كمنشور بنجاح' : 'تم إلغاء حالة النشر');
+    }
+
+    function updateSidebarProgress() {
+      const total = APP_DATA.chapters.length;
+      const count = APP_DATA.chapters.filter(c => publishStatus[c.id]).length;
+      const pct = Math.round((count / total) * 100);
+      document.getElementById('progressText').innerText = `${count} / ${total} منشور`;
+      document.getElementById('progressBar').style.width = pct + '%';
+    }
+
+    // NAVIGATION & SCROLL
+    function scrollToChapter(n) {
+      const el = document.getElementById('chapter-' + n);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.pageYOffset - 90;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+
+    function scrollToHarvest() {
+      const el = document.getElementById('harvestSection');
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.pageYOffset - 90;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+
+    function setupScrollObserver() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            if (id.startsWith('chapter-')) {
+              const n = id.replace('chapter-', '');
+              document.querySelectorAll('.nav-item-btn').forEach(b => b.classList.remove('active'));
+              const activeBtn = document.getElementById('nav-btn-' + n);
+              if (activeBtn) activeBtn.classList.add('active');
+            } else if (id === 'harvestSection') {
+              document.querySelectorAll('.nav-item-btn').forEach(b => b.classList.remove('active'));
+              const activeBtn = document.getElementById('nav-btn-harvest');
+              if (activeBtn) activeBtn.classList.add('active');
+            }
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+
+      document.querySelectorAll('.chapter-card').forEach(el => observer.observe(el));
+      observer.observe(document.getElementById('harvestSection'));
+    }
+
+    // SEARCH
+    function filterNav() {
+      const query = document.getElementById('chapterSearch').value.toLowerCase().trim();
+      APP_DATA.chapters.forEach(c => {
+        const btn = document.getElementById('nav-btn-' + c.n);
+        if (!btn) return;
+        const text = (c.title + ' ' + c.epigraph + ' ' + c.hidden.tool + ' ' + c.lastMargin).toLowerCase();
+        btn.parentElement.style.display = text.includes(query) ? '' : 'none';
+      });
+    }
+
+    // COPY UTILITIES
+    function copyText(text, successMsg) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(successMsg || 'تم النسخ للحافظة');
+      }).catch(err => {
+        console.error('Copy failed:', err);
+        showToast('تعذر النسخ تلقائياً');
+      });
+    }
+
+    function copyChapterFull(n) {
+      const c = APP_DATA.chapters[n - 1];
+      const text = `«${c.epigraph}»
+— ${c.epigraphSource}
+
+${c.body}
+
+✍️ هامش عمر على نسخة طه حسين:
+«${c.lastMargin}»
+
+💡 سطر لك:
+${c.lineForYou}
+
+💬 ${c.question}
+
+#بعد_أول_مطب #هوامش_بعد_أول_مطب #مذاكراوي #تالتة_ثانوي`;
+      copyText(text, `تم نسخ الفصل ${n} كاملاً للنشر`);
+    }
+
+    function copyHarvestFull() {
+      const f = APP_DATA.finale;
+      const toolsText = f.tools.map(t => `${t.n}. ${t.name} (فصل ${t.ch}): ${t.line}`).join('\n');
+      const text = `«${f.epigraph}»
+— ${f.epigraphSource}
+
+${f.intro}
+
+⚙️ نظام التشغيل المتكامل (١٢ أداة من الهوامش):
+${toolsText}
+
+${f.outro}
+
+💬 ${f.question}
+
+#بعد_أول_مطب #هوامش_بعد_أول_مطب #مذاكراوي #تالتة_ثانوي`;
+      copyText(text, 'تم نسخ بوست الحصاد الختامي كاملاً');
+    }
+
+    function copyHarvestCapsule() {
+      copyText(APP_DATA.finale.capsule, 'تم نسخ كبسولة الحصاد');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    // THEME CYCLER
+    function cycleTheme() {
+      const themes = ['sepia', 'dark', 'light'];
+      const nextIdx = (themes.indexOf(currentTheme) + 1) % themes.length;
+      currentTheme = themes[nextIdx];
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      
+      const themeIcons = { sepia: '📜', dark: '🌙', light: '☀️' };
+      document.getElementById('themeBtn').innerText = themeIcons[currentTheme];
+      showToast(`الثيم الحالي: ${currentTheme === 'sepia' ? 'ورق أزبكية' : currentTheme === 'dark' ? 'داكن ليلى' : 'فاتح صحفي'}`);
+    }
+
+    // AMBIENT SOUND (Synthesizer via Web Audio API)
+    function toggleAmbience() {
+      if (isPlayingAudio) {
+        if (noiseNode) {
+          noiseNode.stop();
+          noiseNode.disconnect();
+          noiseNode = null;
+        }
+        isPlayingAudio = false;
+        document.getElementById('audioBtn').innerText = '🌧️';
+        document.getElementById('audioBtn').style.background = '';
+        showToast('تم إيقاف صوت المطر');
+        return;
+      }
+
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+
+        // Pink/Brown noise generator for realistic gentle rain
+        const bufferSize = audioCtx.sampleRate * 2;
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+        for (let i = 0; i < bufferSize; i++) {
+          const white = Math.random() * 2 - 1;
+          b0 = 0.99886 * b0 + white * 0.0555179;
+          b1 = 0.99332 * b1 + white * 0.0750759;
+          b2 = 0.96900 * b2 + white * 0.1538520;
+          b3 = 0.86650 * b3 + white * 0.3104856;
+          b4 = 0.55000 * b4 + white * 0.5329522;
+          b5 = -0.7616 * b5 - white * 0.0168980;
+          data[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.035;
+          b6 = white * 0.115926;
+        }
+
+        noiseNode = audioCtx.createBufferSource();
+        noiseNode.buffer = buffer;
+        noiseNode.loop = true;
+
+        // Lowpass filter for smooth rain timbre
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 1000;
+
+        const gainNode = audioCtx.createGain();
+        gainNode.gain.value = 0.35;
+
+        noiseNode.connect(filter);
+        filter.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        noiseNode.start();
+        isPlayingAudio = true;
+        document.getElementById('audioBtn').innerText = '⏸️';
+        document.getElementById('audioBtn').style.background = 'var(--accent-soft)';
+        showToast('صوت مطر هادئ للتركيز قيد التشغيل');
+      } catch (err) {
+        console.error('Audio error:', err);
+        showToast('متصفحك يحتاج إذن لتشغيل الصوت');
+      }
+    }
+  </script>
+</body>
+</html>
