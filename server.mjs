@@ -118,6 +118,22 @@ const PORT = Number(localEnvInit.PORT || process.env.PORT || 3456);
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url || '/', `http://127.0.0.1:${PORT}`);
 
+  // Serve only the public November campaign assets from this fixed directory.
+  if (req.method === 'GET' && (url.pathname === '/november' || url.pathname.startsWith('/november/'))) {
+    const name = url.pathname === '/november' || url.pathname === '/november/' ? 'index.html' : url.pathname.slice('/november/'.length);
+    const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.csv': 'text/csv', '.zip': 'application/zip' };
+    const type = mime[path.extname(name)];
+    if (!/^[a-zA-Z0-9-]+\.(html|css|js|json|svg|png|csv|zip)$/.test(name) || !type) {
+      sendJson(res, 404, { ok: false, error: 'Route not found' }); return;
+    }
+    const target = path.join(__dirname, 'november', name);
+    if (!fs.existsSync(target) || !fs.statSync(target).isFile()) {
+      sendJson(res, 404, { ok: false, error: 'Route not found' }); return;
+    }
+    res.writeHead(200, { 'Content-Type': type + (['image/png', 'application/zip'].includes(type) ? '' : '; charset=utf-8'), 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' });
+    fs.createReadStream(target).pipe(res); return;
+  }
+
   if (req.method === 'GET' && (url.pathname === '/' || url.pathname === '/index.html' || url.pathname === '/mozakrawi-content-studio.html')) {
     if (!fs.existsSync(HTML_PATH)) {
       res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
@@ -232,6 +248,8 @@ const server = http.createServer(async (req, res) => {
       }
 
       const payload = await readJsonBody(req);
+      const editorialRules = 'قواعد تحرير ملزمة: لا تطلب من الطالب إنشاء جدول أو تعديله أو إعادة توزيع وقته. لا تضف ساعات أو واجبات أو أسئلة إضافية أو تغييرًا كبيرًا في المذاكرة. شجّعه على تنفيذ الموجود بالفعل في جدوله بأفضل أداء متاح حسب طاقته. أي تصرّف صغير داخل المهمة الحالية. لا سهر تعويضي، لا إذلال أو تخويف أو ضمان درجات أو تشخيص نفسي. الراحة ليست مشروطة بالإنجاز. عند تعارض أمثلة قديمة مع هذه القواعد، التزم بهذه القواعد.';
+      payload.system_instruction = (typeof payload.system_instruction === 'string' ? payload.system_instruction + '\n\n' : '') + editorialRules;
       const upstream = await fetch('https://generativelanguage.googleapis.com/v1beta/interactions', {
         method: 'POST',
         headers: {

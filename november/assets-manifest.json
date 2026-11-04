@@ -1,0 +1,573 @@
+{
+  "sourceHash": "ec44eac7d423c6ed64d476b703d0beb4d374d8e22f433ad46d7b6b1478e52ab4",
+  "slides": [
+    {
+      "day": 1,
+      "slide": 1,
+      "file": "carousel-01-01.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 82
+    },
+    {
+      "day": 1,
+      "slide": 2,
+      "file": "carousel-01-02.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 1,
+      "slide": 3,
+      "file": "carousel-01-03.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 1,
+      "slide": 4,
+      "file": "carousel-01-04.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 1,
+      "slide": 5,
+      "file": "carousel-01-05.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 65
+    },
+    {
+      "day": 3,
+      "slide": 1,
+      "file": "carousel-03-01.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 82
+    },
+    {
+      "day": 3,
+      "slide": 2,
+      "file": "carousel-03-02.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 3,
+      "slide": 3,
+      "file": "carousel-03-03.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 3,
+      "slide": 4,
+      "file": "carousel-03-04.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 3,
+      "slide": 5,
+      "file": "carousel-03-05.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 3,
+      "slide": 6,
+      "file": "carousel-03-06.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 65
+    },
+    {
+      "day": 5,
+      "slide": 1,
+      "file": "carousel-05-01.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 82
+    },
+    {
+      "day": 5,
+      "slide": 2,
+      "file": "carousel-05-02.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 5,
+      "slide": 3,
+      "file": "carousel-05-03.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 5,
+      "slide": 4,
+      "file": "carousel-05-04.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 54
+    },
+    {
+      "day": 5,
+      "slide": 5,
+      "file": "carousel-05-05.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 5,
+      "slide": 6,
+      "file": "carousel-05-06.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 65
+    },
+    {
+      "day": 8,
+      "slide": 1,
+      "file": "carousel-08-01.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 82
+    },
+    {
+      "day": 8,
+      "slide": 2,
+      "file": "carousel-08-02.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 8,
+      "slide": 3,
+      "file": "carousel-08-03.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 8,
+      "slide": 4,
+      "file": "carousel-08-04.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 8,
+      "slide": 5,
+      "file": "carousel-08-05.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 8,
+      "slide": 6,
+      "file": "carousel-08-06.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 65
+    },
+    {
+      "day": 10,
+      "slide": 1,
+      "file": "carousel-10-01.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 82
+    },
+    {
+      "day": 10,
+      "slide": 2,
+      "file": "carousel-10-02.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 10,
+      "slide": 3,
+      "file": "carousel-10-03.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 10,
+      "slide": 4,
+      "file": "carousel-10-04.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 10,
+      "slide": 5,
+      "file": "carousel-10-05.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 10,
+      "slide": 6,
+      "file": "carousel-10-06.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 65
+    },
+    {
+      "day": 13,
+      "slide": 1,
+      "file": "carousel-13-01.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 82
+    },
+    {
+      "day": 13,
+      "slide": 2,
+      "file": "carousel-13-02.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 13,
+      "slide": 3,
+      "file": "carousel-13-03.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 13,
+      "slide": 4,
+      "file": "carousel-13-04.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 13,
+      "slide": 5,
+      "file": "carousel-13-05.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 13,
+      "slide": 6,
+      "file": "carousel-13-06.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 65
+    },
+    {
+      "day": 15,
+      "slide": 1,
+      "file": "carousel-15-01.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 82
+    },
+    {
+      "day": 15,
+      "slide": 2,
+      "file": "carousel-15-02.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 15,
+      "slide": 3,
+      "file": "carousel-15-03.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 15,
+      "slide": 4,
+      "file": "carousel-15-04.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 15,
+      "slide": 5,
+      "file": "carousel-15-05.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 15,
+      "slide": 6,
+      "file": "carousel-15-06.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 65
+    },
+    {
+      "day": 17,
+      "slide": 1,
+      "file": "carousel-17-01.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 82
+    },
+    {
+      "day": 17,
+      "slide": 2,
+      "file": "carousel-17-02.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 17,
+      "slide": 3,
+      "file": "carousel-17-03.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 17,
+      "slide": 4,
+      "file": "carousel-17-04.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 17,
+      "slide": 5,
+      "file": "carousel-17-05.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 17,
+      "slide": 6,
+      "file": "carousel-17-06.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 65
+    },
+    {
+      "day": 19,
+      "slide": 1,
+      "file": "carousel-19-01.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 82
+    },
+    {
+      "day": 19,
+      "slide": 2,
+      "file": "carousel-19-02.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 19,
+      "slide": 3,
+      "file": "carousel-19-03.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 19,
+      "slide": 4,
+      "file": "carousel-19-04.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 19,
+      "slide": 5,
+      "file": "carousel-19-05.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 19,
+      "slide": 6,
+      "file": "carousel-19-06.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 65
+    },
+    {
+      "day": 22,
+      "slide": 1,
+      "file": "carousel-22-01.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 82
+    },
+    {
+      "day": 22,
+      "slide": 2,
+      "file": "carousel-22-02.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 22,
+      "slide": 3,
+      "file": "carousel-22-03.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 22,
+      "slide": 4,
+      "file": "carousel-22-04.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 22,
+      "slide": 5,
+      "file": "carousel-22-05.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 22,
+      "slide": 6,
+      "file": "carousel-22-06.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 65
+    },
+    {
+      "day": 25,
+      "slide": 1,
+      "file": "carousel-25-01.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 82
+    },
+    {
+      "day": 25,
+      "slide": 2,
+      "file": "carousel-25-02.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 25,
+      "slide": 3,
+      "file": "carousel-25-03.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 25,
+      "slide": 4,
+      "file": "carousel-25-04.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 25,
+      "slide": 5,
+      "file": "carousel-25-05.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 25,
+      "slide": 6,
+      "file": "carousel-25-06.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 65
+    },
+    {
+      "day": 30,
+      "slide": 1,
+      "file": "carousel-30-01.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 82
+    },
+    {
+      "day": 30,
+      "slide": 2,
+      "file": "carousel-30-02.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 30,
+      "slide": 3,
+      "file": "carousel-30-03.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 30,
+      "slide": 4,
+      "file": "carousel-30-04.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 30,
+      "slide": 5,
+      "file": "carousel-30-05.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 58
+    },
+    {
+      "day": 30,
+      "slide": 6,
+      "file": "carousel-30-06.png",
+      "width": 1080,
+      "height": 1350,
+      "fontSize": 65
+    }
+  ]
+}

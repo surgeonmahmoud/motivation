@@ -717,7 +717,7 @@
 
       <div class="header-actions">
         <a class="btn" href="mozakrawi-hawamesh-reader.html" style="text-decoration:none;border-color:rgba(201,138,44,0.6);background:rgba(201,138,44,0.12);color:#f59e0b;font-weight:700;">📖 رواية وقارئ الهوامش (١٢ حلقة + الحصاد)</a>
-        <a class="btn" href="mozakrawi-baad-awal-matab-november.html" style="text-decoration:none;border-color:rgba(245,158,11,0.38);color:var(--style-narrative);">🚧 سلسلة بعد أول مطب (شهر ١١)</a>
+        <a class="btn btn-primary" href="/november" style="text-decoration:none;">نوفمبر الجديد • ٣٠ رسالة وديجرامات</a>
         <a class="btn" href="mozakrawi-touq-el-najah-december.md" style="text-decoration:none;border-color:rgba(6,182,212,0.38);color:#06B6D4;">❄️ حملة شهر ١٢</a>
         <a class="btn" href="mozakrawi-schedule-export-meta-buffer.csv" download="mozakrawi-schedule-export.csv" style="text-decoration:none;">📊 شيت الجدولة .csv</a>
         <button class="btn btn-ai" id="btnOpenKeyModal" type="button">
@@ -740,13 +740,13 @@
         ✍️ اطلب أي موضوع / موجة ١٠ بوستات
       </button>
       <button class="mode-tab" data-mode="monthplan" type="button">
-        📅 خريطة وكبسولات هذا الشهر <span class="tab-count">30 يوم</span>
+        📅 أرشيف الكبسولات العامة <span class="tab-count">30 يوم</span>
       </button>
       <button class="mode-tab" data-mode="roadmap" type="button">
         🗺️ خريطة الشهور الجاية <span class="tab-count">9 شهور</span>
       </button>
       <button class="mode-tab" data-mode="series" type="button" style="border-bottom-color:#F59E0B;">
-        <span class="pill-dot" style="background:#F59E0B"></span>🚧 سلسلة بعد أول مطب <span class="tab-count">١٢ رسالة + كاروسيل</span>
+        <span class="pill-dot" style="background:#F59E0B"></span>أرشيف: بعد أول مطب <span class="tab-count">الخطة السابقة</span>
       </button>
       <button class="mode-tab" data-mode="alerts" type="button">
         🔔 تنبيهات الفريق <span class="tab-count">6</span>
@@ -1158,9 +1158,10 @@
         throw new Error('من فضلك أدخل مفتاح Gemini API أولاً من نافذة الإعدادات.');
       }
 
+      const editorialRules = 'قواعد تحرير ملزمة تتقدم على أي تعليمات قديمة أو أمثلة مخالفة: ممنوع طلب إنشاء جدول مذاكرة أو تعديله أو إعادة توزيع الوقت. ممنوع زيادة ساعات أو واجبات أو عدد أسئلة أو تكليف كبير أو تعويض بالسهر. شجّع الطالب على تنفيذ الموجود بالفعل في جدوله بأفضل أداء متاح حسب طاقته. أي اقتراح صغير داخل المهمة نفسها، دون عبء إضافي. لا تخويف أو إهانة أو ضمان درجات أو تشخيص نفسي. لا تجعل الراحة مشروطة بالإنجاز.';
       const payload = {
         model: savedState.model || 'gemini-3.8-flash',
-        system_instruction: customSystem || MOZAKRAWI_SYSTEM_INSTRUCTION,
+        system_instruction: (customSystem || MOZAKRAWI_SYSTEM_INSTRUCTION) + '\n\n' + editorialRules,
         input: input
       };
 
