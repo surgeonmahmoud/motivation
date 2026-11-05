@@ -118,6 +118,19 @@ const PORT = Number(localEnvInit.PORT || process.env.PORT || 3456);
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url || '/', `http://127.0.0.1:${PORT}`);
 
+  // The weekly story is the current reader; the earlier studio remains at /studio.
+  const weeklyAliases = ['/', '/index.html', '/reader', '/hawamesh', '/weekly', '/weekly/'];
+  if (req.method === 'GET' && (weeklyAliases.includes(url.pathname) || url.pathname.startsWith('/weekly/'))) {
+    const name = weeklyAliases.includes(url.pathname) ? 'index.html' : url.pathname.slice('/weekly/'.length);
+    const types = { '.html':'text/html', '.css':'text/css', '.js':'text/javascript', '.json':'application/json', '.png':'image/png', '.svg':'image/svg+xml', '.txt':'text/plain', '.md':'text/markdown', '.csv':'text/csv', '.zip':'application/zip' };
+    const mime = types[path.extname(name)];
+    if (!/^[a-zA-Z0-9-]+\.(html|css|js|json|png|svg|txt|md|csv|zip)$/.test(name) || !mime) { sendJson(res,404,{ok:false,error:'Route not found'}); return; }
+    const target = path.join(__dirname,'weekly',name);
+    if (!fs.existsSync(target) || !fs.statSync(target).isFile()) { sendJson(res,404,{ok:false,error:'Route not found'}); return; }
+    res.writeHead(200,{'Content-Type':mime + (['image/png','application/zip'].includes(mime)?'':'; charset=utf-8'),'Cache-Control':'no-cache','X-Content-Type-Options':'nosniff'});
+    fs.createReadStream(target).pipe(res);return;
+  }
+
   // Serve only the public November campaign assets from this fixed directory.
   if (req.method === 'GET' && (url.pathname === '/november' || url.pathname.startsWith('/november/'))) {
     const name = url.pathname === '/november' || url.pathname === '/november/' ? 'index.html' : url.pathname.slice('/november/'.length);
@@ -134,7 +147,7 @@ const server = http.createServer(async (req, res) => {
     fs.createReadStream(target).pipe(res); return;
   }
 
-  if (req.method === 'GET' && (url.pathname === '/' || url.pathname === '/index.html' || url.pathname === '/mozakrawi-content-studio.html')) {
+  if (req.method === 'GET' && (url.pathname === '/studio' || url.pathname === '/mozakrawi-content-studio.html')) {
     if (!fs.existsSync(HTML_PATH)) {
       res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
       res.end('ملف الاستوديو غير موجود بعد.');

@@ -1,7 +1,7 @@
 const RULES='قواعد تحرير ملزمة تتقدم على الأمثلة القديمة: لا تطلب من الطالب إنشاء جدول أو تعديله أو إعادة توزيع وقته. لا تضف ساعات أو واجبات أو عدد أسئلة أو تكليف كبير. شجعه على تنفيذ الموجود في جدوله بأفضل أداء متاح حسب طاقته، وأي تصرف صغير يكون داخل المهمة الحالية. لا سهر تعويضي ولا تخويف أو إذلال أو ضمان درجات أو تشخيص نفسي. الراحة ليست مشروطة بالإنجاز.';
 const json=(status,data)=>new Response(JSON.stringify(data),{status,headers:{'content-type':'application/json; charset=utf-8','cache-control':'no-store','x-content-type-options':'nosniff'}});
 const aliases={
- '/':'/index.html', '/reader':'/mozakrawi-hawamesh-reader.html','/hawamesh':'/mozakrawi-hawamesh-reader.html',
+ '/':'/weekly/index.html','/index.html':'/weekly/index.html','/weekly':'/weekly/index.html','/weekly/':'/weekly/index.html','/reader':'/weekly/index.html','/hawamesh':'/weekly/index.html','/studio':'/mozakrawi-content-studio.html',
  '/series':'/mozakrawi-baad-awal-matab-november.html','/hawamesh.md':'/mozakrawi-hawamesh-novella.md',
  '/content-bank.md':'/mozakrawi-content-bank-2026-10-30.md','/november':'/november/index.html','/november/':'/november/index.html'
 };

@@ -20,3 +20,10 @@ for(const name of await fs.readdir(path.join(root,'november'))){
 }
 await fs.copyFile(path.join(out,'mozakrawi-content-studio.html'),path.join(out,'index.html'));
 console.log('Cloudflare public assets built in dist/cloudflare');
+
+await fs.mkdir(path.join(out,'weekly'),{recursive:true});
+const weeklyNames=new Set(['index.html','app.js','style.css','episodes.json','brand.png','season.md','season.zip','schedule.csv']);
+for(const name of await fs.readdir(path.join(root,'weekly'))){
+ if(weeklyNames.has(name)||/^(episode-\d{2}\.(txt|html)|visual-\d{2}\.(svg|png))$/.test(name))await fs.copyFile(path.join(root,'weekly',name),path.join(out,'weekly',name));
+}
+await fs.copyFile(path.join(out,'weekly/index.html'),path.join(out,'index.html'));

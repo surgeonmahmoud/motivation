@@ -1,0 +1,13 @@
+﻿episode,date,weekday,time,timezone,title,problem,text_file,image,status
+1,2026-11-06,Friday,20:00,Africa/Cairo,الورقة اللي اتطبقت أربع مرات,الخوف من الدرجة يمنع بدء المهمة الحالية,episode-01.txt,visual-01.png,draft
+2,2026-11-13,Friday,20:00,Africa/Cairo,الحل اللي ناقصه سؤال,فهم الشرح دون القدرة على اختيار بداية الحل,episode-02.txt,visual-02.png,draft
+3,2026-11-20,Friday,20:00,Africa/Cairo,صورة واحدة فتحت عشر أبواب,الهاتف مطلوب للمتابعة لكنه يفتح باب التشتت,episode-03.txt,visual-03.png,draft
+4,2026-11-27,Friday,20:00,Africa/Cairo,البنت اللي الكل فاكرها فاهمة,الخلط بين ألفة الصفحة واسترجاع المعلومة,episode-04.txt,visual-04.png,draft
+5,2026-12-04,Friday,20:00,Africa/Cairo,الكرسي اللي قدامها,ضغط المقارنة داخل البيت,episode-05.txt,visual-05.png,draft
+6,2026-12-11,Friday,20:00,Africa/Cairo,المصباح اللي فضل صاحي,تأنيب الضمير المرتبط بالنوم والإرهاق,episode-06.txt,visual-06.png,draft
+7,2026-12-18,Friday,20:00,Africa/Cairo,كل الأبواب مفتوحة إلا الصفحة,التنقل بين المدرسين والمصادر بحثًا عن طمأنينة كاملة,episode-07.txt,visual-07.png,draft
+8,2026-12-25,Friday,20:00,Africa/Cairo,الغلط اللي كان بيرجع من نفس الباب,تكرار الخطأ مع الاستعجال في التصحيح,episode-08.txt,visual-08.png,draft
+9,2027-01-01,Friday,20:00,Africa/Cairo,الراجل اللي ماقالش مجموعه,الخوف من أن درجة واحدة تحدد قيمة الشخص ومستقبله كله,episode-09.txt,visual-09.png,draft
+10,2027-01-08,Friday,20:00,Africa/Cairo,يوم ما رجعتش للصفر,تفسير التعطل بعد فترة جيدة كفشل كامل,episode-10.txt,visual-10.png,draft
+11,2027-01-15,Friday,20:00,Africa/Cairo,مش محتاجة أقول أنا كويسة,الإحراج من طلب الدعم عند تعارض المطالب أو غموض المهمة,episode-11.txt,visual-11.png,draft
+12,2027-01-22,Friday,20:00,Africa/Cairo,الصفحة اللي سابوها مفتوحة,ربط قيمة المحاولة بالنتيجة بدل جودة التنفيذ الممكنة,episode-12.txt,visual-12.png,draft
