@@ -1,9 +1,9 @@
-﻿episode,date,weekday,time,timezone,title,problem,text_file,image,status
-1,2026-11-06,Friday,20:00,Africa/Cairo,لسه ما وزّعوش الورق,الخوف من الدرجة يعطّل المذاكرة اللي بعدها,episode-01.txt,visual-01.png,draft
-2,2026-11-09,Monday,20:00,Africa/Cairo,الكشكول اللي مفيهوش غلطة,نقل الحل أو فهمه أثناء المشاهدة من غير القدرة على البدء وحدك,episode-02.txt,visual-02.png,draft
-3,2026-11-13,Friday,20:00,Africa/Cairo,كانت داخلة تبعت صورة,الموبايل مطلوب للمذاكرة لكنه يسحبك لحاجات تانية,episode-03.txt,visual-03.png,draft
-4,2026-11-16,Monday,20:00,Africa/Cairo,كانت حافظاها وهي مفتوحة,الإحساس إنك عارف الدرس يختفي لما تقفل الكتاب,episode-04.txt,visual-04.png,draft
-5,2026-11-20,Friday,20:00,Africa/Cairo,إنتِ قلتيلي لسه ما وزّعوش,ضغط البيت والمقارنة يخلي الطالب يخبي تعثره,episode-05.txt,visual-05.png,draft
-6,2026-11-23,Monday,20:00,Africa/Cairo,يمكن العيب في المدرس؟,الحيرة بين المدرسين والمصادر من غير تحديد سبب التعثر,episode-06.txt,visual-06.png,draft
-7,2026-11-27,Friday,20:00,Africa/Cairo,النور كان منوّر طول الليل,الإرهاق وتأنيب الضمير يحوّلوا المذاكرة لسهر بلا تركيز,episode-07.txt,visual-07.png,draft
-8,2026-11-30,Monday,20:00,Africa/Cairo,الورقة دي هتروح البيت,الخوف في الامتحان والدرجة الأقل من المتوقع رغم المحاولة,episode-08.txt,visual-08.png,draft
+﻿episode,date,weekday,time,timezone,kind,title,problem,text_file,image,status
+1,2026-11-06,Friday,20:00,Africa/Cairo,advice,فتحت الموبايل عشان تذاكر… خرجت منه بعد ما الوقت ضاع؟,التشتت بالموبايل أثناء المذاكرة,episode-01.txt,visual-03.png,draft
+2,2026-11-09,Monday,20:00,Africa/Cairo,advice,قعدت كتير… ليه اللي خلصته قليل؟,المحاضرة أو المهمة تطول والتحصيل يفضل قليل,episode-02.txt,visual-06.png,draft
+3,2026-11-13,Friday,20:00,Africa/Cairo,advice,أغيّر المدرس… ولا المشكلة في حتة محددة؟,الحيرة بين المدرسين والمصادر,episode-03.txt,visual-05.png,draft
+4,2026-11-16,Monday,20:00,Africa/Cairo,advice,عارف المعلومة قدامك… وبتنسى لما تقفل الصفحة؟,النسيان رغم تكرار القراءة,episode-04.txt,visual-04.png,draft
+5,2026-11-20,Friday,20:00,Africa/Cairo,advice,بتعيد نفس السطر… ولا قادر تكمّل ولا راضي ترتاح؟,الإرهاق والسهر وتأنيب الضمير,episode-05.txt,visual-07.png,draft
+6,2026-11-23,Monday,20:00,Africa/Cairo,advice,كل ما تيجي تبدأ… تفتكر كل اللي متراكم عليك؟,الخوف من التراكمات يمنع بدء المهمة الحالية,episode-06.txt,visual-01.png,draft
+7,2026-11-27,Friday,20:00,Africa/Cairo,advice,فاهم الشرح… ليه أول ما تحل لوحدك بتقف؟,الفجوة بين متابعة الحل والقدرة على اختياره,episode-07.txt,visual-02.png,draft
+8,2026-11-30,Monday,20:00,Africa/Cairo,story,هو إنت بقالك ساعتين بتذاكر؟,موقف قصصي مستقل عن بطء الإنجاز والخوف من طلب المساعدة,episode-08.txt,visual-08.png,draft
