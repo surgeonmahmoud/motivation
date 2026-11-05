@@ -52,9 +52,17 @@ for p in posts:
             add_carousel(z, p)
 
 bundle = assets / 'november-publishing-kit.zip'
+bundle_md = (root / 'mozakrawi-november-2026-complete.md').read_text()
+for post in posts:
+    if 'carousel' in post:
+        day = post['day']
+        bundle_md = bundle_md.replace(
+            f'[تحميل صور الكاروسيل كاملة — ZIP](november/carousel-{day:02}.zip)',
+            f'[عرض شرائح الكاروسيل ومصدرها](carousels/day-{day:02}/editable-source.html)'
+        )
 with zipfile.ZipFile(bundle, 'w', zipfile.ZIP_DEFLATED) as z:
     z.writestr('START-HERE.txt', readme)
-    z.write(root / 'mozakrawi-november-2026-complete.md', 'november-complete.md')
+    z.writestr('november-complete.md', bundle_md)
     z.write(assets / 'schedule.csv', 'schedule.csv')
     for p in posts:
         z.writestr(f"captions/day-{p['day']:02}.txt", caption(p))
@@ -65,13 +73,13 @@ with zipfile.ZipFile(bundle, 'w', zipfile.ZIP_DEFLATED) as z:
                 name = p['diagram'].replace('.svg', '.' + ext)
                 # Match the Markdown links so the downloaded full plan remains navigable.
                 z.write(assets / name, 'november/' + name)
-    # Day archive links in the Markdown also resolve in the downloaded kit.
-    for p in posts:
-        if 'carousel' in p:
-            name = f"carousel-{p['day']:02}.zip"
-            z.write(assets / name, 'november/' + name)
 with zipfile.ZipFile(bundle) as z:
     assert z.testzip() is None
     assert len([n for n in z.namelist() if n.startswith('carousels/') and n.endswith('.png')]) == len(expected)
-    assert z.read('november-complete.md') == (root / 'mozakrawi-november-2026-complete.md').read_bytes()
+    assert z.read('november-complete.md').decode() == bundle_md
+    assert not any(name.endswith('.zip') for name in z.namelist())
+    for post in posts:
+        assert post['body'] in bundle_md
+        if 'carousel' in post:
+            assert f"carousels/day-{post['day']:02}/editable-source.html" in z.namelist()
 print(f'Packaged 12 daily carousels and {len(expected)} slides. Complete kit: {bundle.stat().st_size / 1024 / 1024:.1f} MiB')
